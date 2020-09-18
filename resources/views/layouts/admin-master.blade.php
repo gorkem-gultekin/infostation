@@ -1,32 +1,28 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/metisMenu.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.min.css">
+    <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/icon/favicon.ico')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/metisMenu.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/slicknav.min.css')}}">
     <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all"/>
     <!-- others css -->
-    <link rel="stylesheet" href="assets/css/typography.css">
-    <link rel="stylesheet" href="assets/css/default-css.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="{{asset('assets/css/typography.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/default-css.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
     <!-- modernizr css -->
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="{{asset('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
 </head>
 <body>
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
 <!-- preloader area start -->
 <div id="preloader">
     <div class="loader"></div>
@@ -46,19 +42,23 @@
             <div class="menu-inner">
                 <nav>
                     <ul class="metismenu" id="menu">
-                        <li><a href="admin"><i class="ti-key"></i> <span>admin-master</span></a></li>
-                        <li><a href="users"><i class="ti-user"></i> <span>users</span></a></li>
-                        <li><a href="register"><i class="ti-stamp"></i> <span>register</span></a></li>
+                        <li><a href="{{route('home')}}"><i class="ti-home"></i> <span>home</span></a></li>
+
                         <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                            <a href="javascript:void(0)" aria-expanded="true"><i
+                                    class="ti-dashboard"></i><span>Content</span></a>
                             <ul class="collapse">
-                                <li class="active"><a href="index.html">ICO dashboard</a></li>
-                                <li><a href="index2.html">Ecommerce dashboard</a></li>
-                                <li><a href="index3.html">SEO dashboard</a></li>
+                                <li class="active"><a href="new"><i class="ti-marker-alt"></i><span>New Content</span></a>
+                                </li><!-- active edit-->
+                                <li><a href="pending"><i class="ti-save"></i><span>Pending Approval</span></a></li>
+                                <li><a href="#"><i class="ti-trash"></i><span>Deleted Content</span></a></li>
+                                <li><a href="#"><i class="ti-eye"></i><span>Published</span> </a></li>
                             </ul>
                         </li>
+                        <li><a href="users"><i class="ti-user"></i> <span>users</span></a></li>
                         <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Sidebar
+                            <a href="javascript:void(0)" aria-expanded="true"><i
+                                    class="ti-layout-sidebar-left"></i><span>Sidebar
                                         Types
                                     </span></a>
                             <ul class="collapse">
@@ -67,7 +67,8 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Charts</span></a>
+                            <a href="javascript:void(0)" aria-expanded="true"><i
+                                    class="ti-pie-chart"></i><span>Charts</span></a>
                             <ul class="collapse">
                                 <li><a href="barchart.html">bar chart</a></li>
                                 <li><a href="linechart.html">line Chart</a></li>
@@ -115,7 +116,8 @@
                         <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li>
                         <li><a href="invoice.html"><i class="ti-receipt"></i> <span>Invoice Summary</span></a></li>
                         <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layers-alt"></i> <span>Pages</span></a>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layers-alt"></i>
+                                <span>Pages</span></a>
                             <ul class="collapse">
                                 <li><a href="login.html">Login</a></li>
                                 <li><a href="login2.html">Login 2</a></li>
@@ -177,48 +179,8 @@
                                             <span>Just Now</span>
                                         </div>
                                     </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
-                                        <div class="notify-text">
-                                            <p>New Commetns On Post</p>
-                                            <span>30 Seconds ago</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                        <div class="notify-text">
-                                            <p>Some special like you</p>
-                                            <span>Just Now</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
-                                        <div class="notify-text">
-                                            <p>New Commetns On Post</p>
-                                            <span>30 Seconds ago</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                        <div class="notify-text">
-                                            <p>Some special like you</p>
-                                            <span>Just Now</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                        <div class="notify-text">
-                                            <p>You have Changed Your Password</p>
-                                            <span>Just Now</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                        <div class="notify-text">
-                                            <p>You have Changed Your Password</p>
-                                            <span>Just Now</span>
-                                        </div>
-                                    </a>
+
+
                                 </div>
                             </div>
                         </li>
@@ -314,16 +276,23 @@
                             <li><a href="index.html">Home</a></li>
                             <li><span>Dashboard</span></li>
                         </ul>-->
+                        @yield('title')
                     </div>
                 </div>
                 <div class="col-sm-6 clearfix">
                     <div class="user-profile pull-right">
-                        <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                        <img class="avatar user-thumb" src="{{asset('assets/images/author/avatar.png')}}" alt="avatar">
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <i
+                                class="fa fa-angle-down"></i></h4>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Message</a>
-                            <a class="dropdown-item" href="#">Settings</a>
-                            <a class="dropdown-item" href="#">Log Out</a>
+                            <!-- <a class="dropdown-item" href="#">Message</a>
+                             <a class="dropdown-item" href="#">Settings</a>-->
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -470,7 +439,7 @@
                         <div class="s-sw-title">
                             <h5>Notifications</h5>
                             <div class="s-swtich">
-                                <input type="checkbox" id="switch1" />
+                                <input type="checkbox" id="switch1"/>
                                 <label for="switch1">Toggle</label>
                             </div>
                         </div>
@@ -480,7 +449,7 @@
                         <div class="s-sw-title">
                             <h5>Show recent activity</h5>
                             <div class="s-swtich">
-                                <input type="checkbox" id="switch2" />
+                                <input type="checkbox" id="switch2"/>
                                 <label for="switch2">Toggle</label>
                             </div>
                         </div>
@@ -490,7 +459,7 @@
                         <div class="s-sw-title">
                             <h5>Show your emails</h5>
                             <div class="s-swtich">
-                                <input type="checkbox" id="switch3" />
+                                <input type="checkbox" id="switch3"/>
                                 <label for="switch3">Toggle</label>
                             </div>
                         </div>
@@ -500,7 +469,7 @@
                         <div class="s-sw-title">
                             <h5>Show Task statistics</h5>
                             <div class="s-swtich">
-                                <input type="checkbox" id="switch4" />
+                                <input type="checkbox" id="switch4"/>
                                 <label for="switch4">Toggle</label>
                             </div>
                         </div>
@@ -510,7 +479,7 @@
                         <div class="s-sw-title">
                             <h5>Notifications</h5>
                             <div class="s-swtich">
-                                <input type="checkbox" id="switch5" />
+                                <input type="checkbox" id="switch5"/>
                                 <label for="switch5">Toggle</label>
                             </div>
                         </div>
@@ -523,14 +492,14 @@
 </div>
 <!-- offset area end -->
 <!-- jquery latest version -->
-<script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="{{asset('assets/js/vendor/jquery-2.2.4.min.js')}}"></script>
 <!-- bootstrap 4 js -->
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/metisMenu.min.js"></script>
-<script src="assets/js/jquery.slimscroll.min.js"></script>
-<script src="assets/js/jquery.slicknav.min.js"></script>
+<script src="{{asset('assets/js/popper.min.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+<script src="{{asset('assets/js/metisMenu.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.slimscroll.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.slicknav.min.js')}}"></script>
 
 <!-- start chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
@@ -543,12 +512,12 @@
     ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
 </script>
 <!-- all line chart activation -->
-<script src="assets/js/line-chart.js"></script>
+<script src="{{asset('assets/js/line-chart.js')}}"></script>
 <!-- all pie chart -->
-<script src="assets/js/pie-chart.js"></script>
+<script src="{{asset('assets/js/pie-chart.js')}}"></script>
 <!-- others plugins -->
-<script src="assets/js/plugins.js"></script>
-<script src="assets/js/scripts.js"></script>
+<script src="{{asset('assets/js/plugins.js')}}"></script>
+<script src="{{asset('assets/js/scripts.js')}}"></script>
 </body>
 
 </html>

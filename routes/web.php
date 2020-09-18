@@ -16,11 +16,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/admin','AdminController@index');
-Route::get('/users','AdminController@indexView');
-Route::get('/update/{id}','AdminController@updateView')->where(array('id'=>'[0-9]+'));//id sadece sayı olarak girilebilir
-Route::post('/update/{id}','AdminController@update')->where(array('id'=>'[0-9]+'));//id sadece sayı olarak girilebilir
-Route::get('/delete/{id}','AdminController@delete')->where(array('id'=>'[0-9]+'));//id sadece sayı olarak girilebilir
-Route::get('/register','AdminController@register');
-Route::post('/create','AdminController@create');
+//------------Admin Controller------------
+Route::get('/home','AdminController@index')->name('home');
+Route::get('/users','AdminController@indexView')->name('users');
+Route::post('/user-import','AdminController@userImport')->name('user-import');//excel user added
+Route::get('/user-export','AdminController@userExport')->name('user-export');//excel user download
 
+Route::get('/update/{id}','AdminController@updateView')->where(array('id'=>'[0-9]+'))->name('update');//id control
+Route::post('/update/{id}','AdminController@update')->where(array('id'=>'[0-9]+'));//id control
+Route::get('/delete/{id}','AdminController@delete')->where(array('id'=>'[0-9]+'));//id control
+Route::post('/create','AdminController@userCreate');
+
+//------------Content Controller------------
+Route::get('/pending','ContentController@pending');
+Route::get('/new','ContentController@newcontent');
+Route::post('content-create','ContentController@contentCreate')->name('content-create');
+
+Auth::routes();//login register
+
+//Route::get('/home', 'HomeController@index')->name('home');
