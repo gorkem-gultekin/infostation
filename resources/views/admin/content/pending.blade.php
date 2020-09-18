@@ -4,6 +4,7 @@
     <ul class="breadcrumbs pull-left">
         <li><a href="/admin">Home</a></li>
         <li><span>Pending Approval</span></li>
+        &nbsp;&nbsp;&nbsp;<button type="button" onclick="location.href='{{route('content-export')}}'" class="btn btn-rounded btn-dark mb-3">Download</button>
     </ul>
 @endsection
 @section('content')
@@ -26,6 +27,4 @@
             @endforeach
         </div>
     </div>
-
-
 @endsection

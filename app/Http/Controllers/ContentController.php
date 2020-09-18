@@ -7,13 +7,14 @@ use App\Helpers\UploadPaths;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ContentController extends Controller
 {
     public function pendingView()
     {
        // $pending = Content::where('is_approve', '=', '0')->get();
-        $pendingApproval=Contents::all();
+        $pendingApproval=Contents::with(['user'])->get();
         return view('admin.content.pending', compact('pendingApproval'));
     }
 
@@ -41,4 +42,5 @@ class ContentController extends Controller
         ]);
         return "başarılı";
     }
+
 }

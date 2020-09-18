@@ -19,8 +19,8 @@ Route::get('/', function () {
 //------------Admin Controller------------
 Route::get('/home','AdminController@index')->name('home');
 Route::get('/users','AdminController@indexView')->name('users');
-Route::post('/user-import','AdminController@userImport')->name('user-import');//excel user added
-Route::get('/user-export','AdminController@userExport')->name('user-export');//excel user download
+Route::post('/user-import','ExcelUploadController@userImport')->name('user-import');//excel user added
+Route::get('/user-export','ExcelDownloadController@userExport')->name('user-export');//excel user download
 
 Route::get('/update/{id}','AdminController@updateView')->where(array('id'=>'[0-9]+'))->name('update');//id control
 Route::post('/update/{id}','AdminController@update')->where(array('id'=>'[0-9]+'));//id control
@@ -30,7 +30,8 @@ Route::post('/create','AdminController@userCreate');
 //------------Content Controller------------
 Route::get('/pending','ContentController@pendingView');
 Route::get('/new','ContentController@newcontent');
-Route::post('content-create','ContentController@contentCreate')->name('content-create');
+Route::post('/content-create','ContentController@contentCreate')->name('content-create');
+Route::get('/content-export','ExcelDownloadController@contentExport')->name('content-export');//excel user added
 
 Auth::routes();//login register
 

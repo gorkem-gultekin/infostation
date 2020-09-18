@@ -71,16 +71,6 @@ class AdminController extends Controller
         return "<script>alert('Kayıt başarıyla tamamlandı!')</script>";
     }
 
-    //excel user added
-    public function userImport()
-    {
-        //bşaarılı diye mesaj ekle
-        Excel::import(new UserImport, request()->file('file'));
-        return back();//bulunduğu sayfaya geri döner yeniler
-    }
 
-    public function userExport()
-    {
-        return Excel::download(new UserExport, 'infostation-users.xlsx');
-    }
+
 }
