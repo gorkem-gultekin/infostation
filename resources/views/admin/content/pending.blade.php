@@ -7,38 +7,25 @@
     </ul>
 @endsection
 @section('content')
+
     <div class="main-content-inner">
         <div class="row">
+            @foreach($pendingApproval as $pending)
             <div class="col-lg-6 mt-5">
                 <div class="card">
                     <div class="card-body">
                         <div class="media mb-5">
-                            <img class="img-fluid mr-4" src="assets/images/media/media1.jpg" alt="image">
+                            <img class="img-fluid mr-4" src="{{asset('/uploads/content/').'/'.$pending->photo}}" alt="image" width="100" height="150">
                             <div class="media-body">
-                                <h4 class="mb-3">Media heading</h4> Cras sit amet nibh libero, in gravida nulla. Nulla
-                                vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at,
-                                tempus viverra turpis.
+                                <h4 class="mb-3">{{$pending->title}}</h4>{{$pending->text}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 mt-5">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media mb-5">
-                            <img class="img-fluid mr-4" src="assets/images/media/media1.jpg" alt="image">
-                            <div class="media-body">
-                                <h4 class="mb-3">Media heading</h4> Cras sit amet nibh libero, in gravida nulla. Nulla
-                                vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at,
-                                tempus viverra turpis.
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
+
 
 @endsection

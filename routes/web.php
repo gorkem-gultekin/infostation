@@ -28,7 +28,7 @@ Route::get('/delete/{id}','AdminController@delete')->where(array('id'=>'[0-9]+')
 Route::post('/create','AdminController@userCreate');
 
 //------------Content Controller------------
-Route::get('/pending','ContentController@pending');
+Route::get('/pending','ContentController@pendingView');
 Route::get('/new','ContentController@newcontent');
 Route::post('content-create','ContentController@contentCreate')->name('content-create');
 
