@@ -17,7 +17,7 @@ class Contents extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('text');
-            $table->string('writer');
+            $table->integer('writer')->unsigned();
             $table->boolean('is_approve');
             $table->string('photo');
             $table->rememberToken();

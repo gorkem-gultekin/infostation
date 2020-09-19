@@ -31,7 +31,7 @@ Route::post('/create','AdminController@userCreate');
 Route::get('/pending','ContentController@pendingView');
 Route::get('/new','ContentController@newcontent');
 Route::post('/content-create','ContentController@contentCreate')->name('content-create');
-Route::get('/content-export','ExcelDownloadController@contentExport')->name('content-export');//excel user added
+Route::get('/content-export','ExcelDownloadController@contentExport')->name('content-export');//excel content download
 
 Auth::routes();//login register
 
