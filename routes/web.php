@@ -13,26 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+    Route::get('/', function () {
     return view('welcome');
-});
-//------------Admin Controller------------
-Route::get('/home','AdminController@index')->name('home');
-Route::get('/users','AdminController@indexView')->name('users');
-Route::post('/user-import','ExcelUploadController@userImport')->name('user-import');//excel user added
-Route::get('/user-export','ExcelDownloadController@userExport')->name('user-export');//excel user download
+    });
 
-Route::get('/update/{id}','AdminController@updateView')->where(array('id'=>'[0-9]+'))->name('update');//id control
-Route::post('/update/{id}','AdminController@update')->where(array('id'=>'[0-9]+'));//id control
-Route::get('/delete/{id}','AdminController@delete')->where(array('id'=>'[0-9]+'));//id control
-Route::post('/create','AdminController@userCreate');
 
-//------------Content Controller------------
-Route::get('/pending','ContentController@pendingView');
-Route::get('/new','ContentController@newcontent');
-Route::post('/content-create','ContentController@contentCreate')->name('content-create');
-Route::get('/content-export','ExcelDownloadController@contentExport')->name('content-export');//excel content download
+    Auth::routes();//login register
+    Auth::routes(['verify'=>true]);
 
-Auth::routes();//login register
+    Route::group(['middleware' => 'auth'], function () {
+    //giriş yapıldıktan sonra gelicek roouterlar buraya yazılmalı
+    //------------Admin Controller------------
+    Route::get('/home', 'AdminController@index')->name('home');
+    Route::get('/users', 'AdminController@indexView')->name('users');
+    Route::post('/user-import', 'ExcelUploadController@userImport')->name('user-import');//excel user added
+    Route::get('/user-export', 'ExcelDownloadController@userExport')->name('user-export');//excel user download
 
-//Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/update/{id}', 'AdminController@updateView')->where(array('id' => '[0-9]+'))->name('update');//id control
+    Route::post('/update/{id}', 'AdminController@update')->where(array('id' => '[0-9]+'));//id control
+    Route::get('/delete/{id}', 'AdminController@delete')->where(array('id' => '[0-9]+'));//id control
+    Route::post('/create', 'AdminController@userCreate');
+
+    //------------Content Controller------------
+    Route::get('/pending', 'ContentController@pendingView');
+    Route::get('/new', 'ContentController@newcontent');
+    Route::post('/content-create', 'ContentController@contentCreate')->name('content-create');
+    Route::get('/content-export', 'ExcelDownloadController@contentExport')->name('content-export');//excel content download
+
+    });
+
+    //Route::get('/home', 'HomeController@index')->name('home');

@@ -14,7 +14,7 @@ class ContentController extends Controller
     public function pendingView()
     {
        // $pending = Content::where('is_approve', '=', '0')->get();
-        $pendingApproval=Contents::with(['user'])->get();
+        $pendingApproval=DB::table('contents')->where('is_approve','=','1')->get();
         return view('admin.content.pending', compact('pendingApproval'));
     }
 

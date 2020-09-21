@@ -14,11 +14,6 @@ use function Complex\negative;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         return view('home');
@@ -66,7 +61,6 @@ class AdminController extends Controller
             'email' => $request->get('email'),
             'password' => Hash::make($password),
             'created_at' => Carbon::now(),
-            'position' => ('user')
         ]);
         return "<script>alert('Kayıt başarıyla tamamlandı!')</script>";
     }
