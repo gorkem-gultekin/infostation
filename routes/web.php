@@ -13,15 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-    Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-    });
+});
 
 
-    Auth::routes();//login register
-    Auth::routes(['verify'=>true]);
+Auth::routes();//login register
+Auth::routes(['verify' => true]);
 
-    Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
     //giriş yapıldıktan sonra gelicek roouterlar buraya yazılmalı
     //------------Admin Controller------------
     Route::get('/home', 'AdminController@index')->name('home');
@@ -36,10 +36,15 @@ use Illuminate\Support\Facades\Route;
 
     //------------Content Controller------------
     Route::get('/pending', 'ContentController@pendingView');
-    Route::get('/new', 'ContentController@newcontent');
+    Route::get('/published', 'ContentController@publishedView')->name('published-content');
+    Route::get('/new-content', 'ContentController@newcontentView')->name('new-content');
+    Route::get('/deleted-content','ContentController@deletedView')->name('deleted-content');
     Route::post('/content-create', 'ContentController@contentCreate')->name('content-create');
     Route::get('/content-export', 'ExcelDownloadController@contentExport')->name('content-export');//excel content download
+    Route::get('/content-published/{id}','ContentController@contentPublished')->where(array('id'=>'[0-9]+'))->name('content-published');//content published updated is_aprrove
+    Route::get('/content-delete/{id}', 'ContentController@contentDelete')->where(array('id'=>'[0-9]+'))->name('content-delete');//content delete updated deleted_at
+    Route::get('/content-hard-delete/{id}','ContentController@contenthardDelete')->where(array('id'=>'[0-9]+'))->name('content-hard-delete');//content hard delete
 
-    });
+});
 
-    //Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

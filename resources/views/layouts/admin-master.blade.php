@@ -48,11 +48,11 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i
                                     class="ti-dashboard"></i><span>Content</span></a>
                             <ul class="collapse">
-                                <li class="active"><a href="new"><i class="ti-marker-alt"></i><span>New Content</span></a>
+                                <li class="active"><a href="{{route('new-content')}}"><i class="ti-marker-alt"></i><span>New Content</span></a>
                                 </li><!-- active edit-->
                                 <li><a href="pending"><i class="ti-save"></i><span>Pending Approval</span></a></li>
-                                <li><a href="#"><i class="ti-trash"></i><span>Deleted Content</span></a></li>
-                                <li><a href="#"><i class="ti-eye"></i><span>Published</span> </a></li>
+                                <li><a href="{{route('published-content')}}"><i class="ti-eye"></i><span>Published</span> </a></li>
+                                <li><a href="{{route('deleted-content')}}"><i class="ti-trash"></i><span>Deleted Content</span></a></li>
                             </ul>
                         </li>
                         <li><a href="users"><i class="ti-user"></i> <span>users</span></a></li>

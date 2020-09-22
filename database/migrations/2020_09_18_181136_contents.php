@@ -16,10 +16,11 @@ class Contents extends Migration
         Schema::create('contents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('text');
+            $table->longText('text');
+            $table->string('photo');
             $table->integer('writer')->unsigned();
             $table->boolean('is_approve');
-            $table->string('photo');
+            $table->timestamp('published_at');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
