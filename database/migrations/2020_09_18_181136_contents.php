@@ -19,12 +19,12 @@ class Contents extends Migration
             $table->longText('text');
             $table->string('photo');
             $table->integer('writer')->unsigned();
+            $table->integer('organizer')->unsigned();
             $table->boolean('is_approve');
             $table->timestamp('published_at');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

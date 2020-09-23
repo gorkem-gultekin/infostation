@@ -38,9 +38,8 @@
                             </div>
                         </div>
                         <p align="right">
-                            <button type="button" class="btn btn-outline-warning mb-3">EDİT</button>
-                            <button type="button" class="btn btn-outline-success mb-3"
-                                    onclick="location.href='/content-published/{{$content->id}}'">PUBLISH
+                            <button type="button" class="btn btn-outline-warning mb-3" onclick="location.href='/edit/{{$content->id}}'">EDİT</button>
+                            <button type="button" class="btn btn-outline-success mb-3" onclick="location.href='/content-published/{{$content->id}}'">PUBLISH
                             </button>
                             <button type="button" class="btn btn-outline-danger mb-3"
                                     onclick="location.href='/content-hard-delete/{{$content->id}}'">HARD DELETE
