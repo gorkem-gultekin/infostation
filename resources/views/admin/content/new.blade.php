@@ -6,47 +6,53 @@
         <li><span>New Content</span></li>
     </ul>
 @endsection
-@section('content')<center>
-    <div class="col-6 mt-5">
-        <div class="card">
-            <div class="card-body">
-                <form class="was-validated" action="{{route('content-create')}}" method="POST"
-                      enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <p align="left"> <label for="example-text-input" class="col-form-label">Title</label></p>
-                        <input class="form-control" name="title" type="text" id="example-text-input" required>
-                        <div class="invalid-feedback">Please enter title.</div>
-                    </div>
-                    <div class="form-group">
-                        <p align="left"><label for="exampleFormControlTextarea1">Text</label></p>
-                        <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="3"
-                                  required></textarea>
-                        <div class="invalid-feedback">Please enter content.</div>
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" name="photo" class="custom-file-input" id="validatedCustomFile" required>
-                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-                        <div class="invalid-feedback">Please select Picture.</div>
-                    </div>
-                    <div class="form-group">
-                        <p align="center">
-                            <br>
-                            <button type="submit" class="btn btn-rounded btn-success mb-3">Save</button>
-                            <a href="{{route('home')}}">
-                                <button type="button" class="btn btn-rounded btn-danger mb-3">Cancel</button>
-                            </a>
-                        </p>
-                    </div>
-                    @if (session('content-success'))
-                        <div class="alert alert-success" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <strong>Notification:</strong>&nbsp;{{ session('content-success') }}
-                        </div>
-                    @endif
-                </form>
+@section('content')
+
+    <div class="main-content-inner">
+        @if (session('content-success'))
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>Notification:</strong>&nbsp;{{ session('content-success') }}
             </div>
-        </div>
+        @endif
+        <center>
+            <div class="col-6 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="was-validated" action="{{route('content-create')}}" method="POST"
+                              enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+                                <p align="left"><label for="example-text-input" class="col-form-label">Title</label></p>
+                                <input class="form-control" name="title" type="text" id="example-text-input" required>
+                                <div class="invalid-feedback">Please enter title.</div>
+                            </div>
+                            <div class="form-group">
+                                <p align="left"><label for="exampleFormControlTextarea1">Text</label></p>
+                                <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="3"
+                                          required></textarea>
+                                <div class="invalid-feedback">Please enter content.</div>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" name="photo" class="custom-file-input" id="validatedCustomFile"
+                                       required>
+                                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                <div class="invalid-feedback">Please select Picture.</div>
+                            </div>
+                            <div class="form-group">
+                                <p align="center">
+                                    <br>
+                                    <button type="submit" class="btn btn-rounded btn-success mb-3">Save</button>
+                                    <a href="{{route('home')}}">
+                                        <button type="button" class="btn btn-rounded btn-danger mb-3">Cancel</button>
+                                    </a>
+                                </p>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
     </div>
-</center>
+    </center>
 @endsection

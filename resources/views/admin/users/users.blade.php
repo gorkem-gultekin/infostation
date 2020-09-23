@@ -11,6 +11,12 @@
     <div class="col-12 mt-5">
         <div class="card">
             <div class="card-body">
+                @if (session('user-delete'))
+                    <br> <div class="alert alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <strong>Notification:</strong>&nbsp;{{ session('user-delete') }}
+                    </div><br>
+                @endif
                 <h4 class="header-title">Users Table</h4>
                 <div class="single-table">
                     <div class="table-responsive">

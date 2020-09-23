@@ -40,7 +40,7 @@ class ContentController extends Controller
             'is_approve' => false,
             'writer' => Auth::user()->id
         ]);
-        session()->flash('content-success','Success to save content');
+        session()->flash('content-success','Success to Save Content');
         return back();
     }
     public function publishedView()
@@ -52,6 +52,8 @@ class ContentController extends Controller
     public function contentPublished($id)
     {
         DB::table('contents')->where('id','=',$id)->update(['is_approve'=>'1','published_at'=>Carbon::now(),'deleted_at'=>null]);//content published updated is_approve and published_at
+        session()->flash('content-published','Published Successfully');
+        return back();
     }
 
     public function deletedView()
@@ -63,10 +65,14 @@ class ContentController extends Controller
     public function contentDelete($id)
     {
         DB::table('contents')->where('id','=',$id)->update(['deleted_at'=>Carbon::now(),'is_approve'=>'0']);//content delete updated delete_at
+        session()->flash('content-delete','Successfully Deleted');
+        return back();
     }
     public function contenthardDelete($id)
     {
         DB::table('contents')->delete($id);//content delete updated delete_at
+        session()->flash('content-hard-delete','Successfully Hard Deleted');
+        return back();
     }
 
 

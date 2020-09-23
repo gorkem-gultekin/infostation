@@ -42,28 +42,30 @@ class AdminController extends Controller
             'password' => Hash::make($password),
             'updated_at' => Carbon::now()
         ]);
-        return "<script>alert('Kayıt Güncellendi!')</script>";
+        session()->flash('user-update','Registration Successfully Updated');
+        return back();
     }
 
     public function delete($id)
     {
         DB::table('users')->where('id', '=', $id)->update(['deleted_at' => Carbon::now()]);//id'ye ait kullanıcının deleted_at sütununa silme tarihi ekler ama tabloda durur soft delete
-        return "<script>alert('Başarıyla Silindi')</script>" . back();
+        session()->flash('user-delete','Successfully Deleted');
+        return back();
     }
 
-    public function userCreate(Request $request)
-    {
-        //$data = $request->all();//textboxtaki girilen verilerin hepsini alır
-        $password = $request->get('password');
-        DB::table('users')->insert([
-            'name' => $request->get('name'),
-            'username' => $request->get('username'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($password),
-            'created_at' => Carbon::now(),
-        ]);
-        return "<script>alert('Kayıt başarıyla tamamlandı!')</script>";
-    }
+//    public function userCreate(Request $request)
+//    {
+//        //$data = $request->all();//textboxtaki girilen verilerin hepsini alır
+//        $password = $request->get('password');
+//        DB::table('users')->insert([
+//            'name' => $request->get('name'),
+//            'username' => $request->get('username'),
+//            'email' => $request->get('email'),
+//            'password' => Hash::make($password),
+//            'created_at' => Carbon::now(),
+//        ]);
+//        return "<script>alert('Kayıt başarıyla tamamlandı!')</script>";
+//    }
 
 
 

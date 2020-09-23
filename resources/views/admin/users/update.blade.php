@@ -47,6 +47,13 @@
                                 <button type="button" class="btn btn-danger">Cancel</button>
                             </a>
                         </p>
+                        @if (session('user-update'))
+                           <br> <div class="alert alert-success" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <strong>Notification:</strong>&nbsp;{{ session('user-update') }}
+                            </div>
+                        @endif
+
                     </div>
                 </form>
             </div>

@@ -9,6 +9,22 @@
 @section('content')
 
     <div class="main-content-inner">
+        @if (session('content-published'))
+            <br>
+            <div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>Notification:</strong>&nbsp;{{ session('content-published') }}
+            </div>
+            <br>
+        @endif
+            @if (session('content-delete'))
+                <br>
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>Notification:</strong>&nbsp;{{ session('content-delete') }}
+                </div>
+                <br>
+            @endif
         <div class="row">
             @foreach($contents as $content)
                 <div class="col-lg-6 mt-5">
@@ -21,7 +37,6 @@
                                     <h4 class="mb-3">{{$content->title}}</h4>{{$content->text}}
                                 </div>
                             </div>
-
                             <p align="right">
                                 <button type="button" class="btn btn-outline-warning mb-3">EDİT</button>
                                 <button type="button" class="btn btn-outline-success mb-3" onclick="location.href='/content-published/{{$content->id}}'">PUBLISH</button>
