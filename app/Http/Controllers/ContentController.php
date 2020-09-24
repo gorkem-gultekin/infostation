@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Contents;
 use App\Helpers\UploadPaths;
 use App\User;
@@ -21,7 +22,8 @@ class ContentController extends Controller
 
     public function newcontentView()
     {
-        return view('admin.content.new');
+        $category=DB::table('category')->get();
+        return view('admin.content.new',compact('category'));
     }
 
     public function contentCreate(Request $request)
@@ -37,7 +39,8 @@ class ContentController extends Controller
             'photo' => $contentPhotoName,
             'is_approve' => false,
             'writer' => Auth::user()->id,
-            'organizer' => Auth::user()->id
+            'organizer' => Auth::user()->id,
+            'category'=>$request->get('category')
         ]);
         session()->flash('content-success', 'Success to Save Content');
         return back();
@@ -59,7 +62,7 @@ class ContentController extends Controller
 
     public function editView($id)
     {
-        $contents = DB::table('contents')->where('id', '=', $id)->get();
+        $contents =DB::table('contents')->where('id', '=', $id)->get();
         return view('admin.content.edit', compact('contents'));
     }
 
@@ -76,7 +79,7 @@ class ContentController extends Controller
             'photo' => $contentPhotoName,
             'is_approve' => false,
             'organizer' => Auth::user()->id,
-            'updated_at'=>Carbon::now()
+            'updated_at'=>Carbon::now(),
         ]);
         session()->flash('content-edit', ' Successfully Modified');
         return back();

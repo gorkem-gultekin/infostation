@@ -46,9 +46,8 @@
                     <ul class="metismenu" id="menu">
                         <li><a href="{{route('home')}}"><i class="ti-home"></i> <span>home</span></a></li>
 
-                        <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i
-                                    class="ti-dashboard"></i><span>Content</span></a>
+                        <li class="active">
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Content</span></a>
                             <ul class="collapse">
                                 <li><a href="{{route('new-content')}}"><i
                                             class="ti-marker-alt"></i><span>New Content</span></a>

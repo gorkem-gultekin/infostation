@@ -33,6 +33,17 @@
                                           required></textarea>
                                 <div class="invalid-feedback">Please enter content.</div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-form-label">Custom Select</label>
+                                <select class="custom-select" name="category">
+                                    <option selected="selected">Select Category</option>
+                                    @foreach($category as $ca)
+                                    <option value="{{$ca->id}}">{{$ca->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="custom-file">
                                 <input type="file" name="photo" class="custom-file-input" id="validatedCustomFile"
                                        required>

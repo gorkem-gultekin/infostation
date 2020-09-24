@@ -21,13 +21,14 @@ class Contents extends Migration
             $table->integer('writer')->unsigned();
             $table->integer('organizer')->unsigned();
             $table->boolean('is_approve');
-            $table->timestamp('published_at');
+            $table->string('viewing')->nullable();
+            $table->string('category');
+            $table->timestamp('published_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });
     }
-
     /**
      * Reverse the migrations.
      *
