@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-
+Route::get('/mail',function (){return view('email.register-mail');});
 
 Auth::routes();//login register
-Auth::routes(['verify' => true]);
+//Auth::routes(['verify' => true]); //for verify email
 
 Route::group(['middleware' => 'auth'], function () {
     //giriş yapıldıktan sonra gelicek roouterlar buraya yazılmalı

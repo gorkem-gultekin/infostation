@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -65,12 +66,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user=User::create([
             'name' => $data['name'],
             'username'=>$data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role'=>false
         ]);
+        $to_name = 'infoStation';
+        $to_email = $data['email'];
+        $body = ['name'=>$data['name']];// mail content
+        Mail::send('email.register-mail', $body, function ($message)
+        use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)->subject('Welcome Aboard!');
+            $message->from(env('MAIL_USERNAME'), 'infoStation');
+        });
+        return $user;
     }
 }
