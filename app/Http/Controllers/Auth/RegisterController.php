@@ -75,7 +75,7 @@ class RegisterController extends Controller
         ]);
         $to_name = 'infoStation';
         $to_email = $data['email'];
-        $body = ['name'=>$data['name']];// mail content
+        $body = ['name'=>$data['name'],'email'=>$data['email'],'username'=>$data['username']];// mail content
         Mail::send('email.register-mail', $body, function ($message)
         use ($to_name, $to_email) {
             $message->to($to_email, $to_name)->subject('Welcome Aboard!');

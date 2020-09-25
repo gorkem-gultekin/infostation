@@ -139,7 +139,21 @@
                                                         <br>
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <td>
+                                                        <table cellspacing="0" cellpadding="0" class="force-full-width">
+                                                            <tr>
+                                                                <td style="color: white">
+                                                                    <span>Your account information:</span><br>
+                                                                    Username: {{$username}} <br>
+                                                                    Email:{{$email}}<br><br>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
                                             </table>
+
                                         </center>
 
                                     </td>
