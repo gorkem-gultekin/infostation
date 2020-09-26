@@ -122,7 +122,7 @@
                                 </tr>
                                 <tr>
                                     <td class="headline">
-                                        Welcome Aboard {{$name}}
+                                        Welcome Aboard!
                                     </td>
                                 </tr>
                                 <tr>
