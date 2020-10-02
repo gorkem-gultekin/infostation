@@ -127,7 +127,6 @@
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
-
 .menu-inner {
     overflow-y: scroll;
     height: 100%;

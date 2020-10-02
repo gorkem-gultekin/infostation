@@ -106,7 +106,7 @@ class ContentController extends Controller
         return back();
     }
 
-    public function getContent($category)
+    public function getContent($category=null)
     {
         if ($category == 'spor') {
             return DB::table('contents')->where('category', '=', '1')->get();

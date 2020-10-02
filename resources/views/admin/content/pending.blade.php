@@ -17,14 +17,14 @@
             </div>
             <br>
         @endif
-            @if (session('content-delete'))
-                <br>
-                <div class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <strong>Notification:</strong>&nbsp;{{ session('content-delete') }}
-                </div>
-                <br>
-            @endif
+        @if (session('content-delete'))
+            <br>
+            <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>Notification:</strong>&nbsp;{{ session('content-delete') }}
+            </div>
+            <br>
+        @endif
         <div class="row">
             @foreach($contents as $content)
                 <div class="col-lg-6 mt-5">
@@ -34,13 +34,19 @@
                                 <img class="img-fluid mr-4" src="{{asset('/uploads/content/').'/'.$content->photo}}"
                                      alt="image" width="100" height="150">
                                 <div class="media-body">
-                                    <h4 class="mb-3">{{$content->title}}</h4>{{$content->text}}
+                                    <h4 class="mb-3">{{$content->title}}</h4> {{$content->text}}
                                 </div>
                             </div>
                             <p align="right">
-                                <button type="button" class="btn btn-outline-warning mb-3" onclick="location.href='/edit/{{$content->id}}'">EDİT</button>
-                                <button type="button" class="btn btn-outline-success mb-3" onclick="location.href='/content-published/{{$content->id}}'">PUBLISH</button>
-                                <button type="button" class="btn btn-outline-danger mb-3"  onclick="location.href='/content-delete/{{$content->id}}'">DELETE</button>
+                                <button type="button" class="btn btn-outline-warning mb-3"
+                                        onclick="location.href='/edit/{{$content->id}}'">EDİT
+                                </button>
+                                <button type="button" class="btn btn-outline-success mb-3"
+                                        onclick="location.href='/content-published/{{$content->id}}'">PUBLISH
+                                </button>
+                                <button type="button" class="btn btn-outline-danger mb-3"
+                                        onclick="location.href='/content-delete/{{$content->id}}'">DELETE
+                                </button>
                             </p>
                         </div>
                     </div>

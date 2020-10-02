@@ -3,7 +3,7 @@
     <h4 class="page-title pull-left">New Content</h4>
     <ul class="breadcrumbs pull-left">
         <li><a href="{{route('home')}}">Home</a></li>
-        <li><span>New Content</span></li>
+        <li><span>Edit Content</span></li>
     </ul>
 @endsection
 @section('content')
