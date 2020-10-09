@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label class="col-form-label">Custom Select</label>
                                 <select class="custom-select" name="category">
-                                    <option selected="selected">Select Category</option>
+                                    <option selected="selected" disabled>Select Category</option>
                                     @foreach($category as $ca)
                                     <option value="{{$ca->id}}">{{$ca->name}}</option>
                                     @endforeach

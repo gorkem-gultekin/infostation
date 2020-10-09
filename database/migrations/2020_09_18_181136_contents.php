@@ -21,7 +21,7 @@ class Contents extends Migration
             $table->integer('writer')->unsigned();
             $table->integer('organizer')->unsigned();
             $table->boolean('is_approve');
-            $table->string('viewing')->nullable();
+            $table->integer('viewing')->nullable();
             $table->string('category');
             $table->timestamp('published_at')->nullable();
             $table->rememberToken();

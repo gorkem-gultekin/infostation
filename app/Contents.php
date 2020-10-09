@@ -21,4 +21,5 @@ class Contents extends Model
     {
         return $this->hasMany('App\Category','id','category');
     }
+    protected $table="contents";
 }

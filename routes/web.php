@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('/soon', function () {
-    return view('soon');
-});
-Route::get('/mail',function (){return view('email.register-mail');});
+//Route::get('/', function () {
+//    return view('index');
+//});
+Route::get('/','HomeController@index');
+Route::get('/content-post/{id}','HomeController@contentPost');
 
+
+Route::get('/mail',function (){return view('email.register-mail');});
 Auth::routes();//login register
 //Auth::routes(['verify' => true]); //for verify email
 

@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\UserExport;
-use App\Imports\UserImport;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Maatwebsite\Excel\Facades\Excel;
 use function Complex\negative;
 
 class AdminController extends Controller
@@ -35,6 +32,7 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         $password = $request->get('password');
+
         User::where('id', $id)->update([
             'name' => $request->get('name'),
             'username' => $request->get('username'),
