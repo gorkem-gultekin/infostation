@@ -106,57 +106,57 @@ class ContentController extends Controller
         return back();
     }
 
-    public function getContent($category=null)
-    {
-        if ($category == 'spor') {
-            return DB::table('contents')->where('category', '=', '1')->get();
-        }
-        elseif ($category == 'finans')
-        {
-            return DB::table('category')
-                ->join('contents','contents.category','=','category.id')
-                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-                ->where('category', '=', '2')->get();
-        }
-        elseif ($category == 'magazin')
-        {
-            return DB::table('category')
-                ->join('contents','contents.category','=','category.id')
-                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-                ->where('category', '=', '3')->get();
-        }
-        elseif ($category == 'politika')
-        {
-            return DB::table('category')
-                ->join('contents','contents.category','=','category.id')
-                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-                ->where('category', '=', '4')->get();
-        }
-        elseif ($category == 'saglik')
-        {
-            return DB::table('category')
-                ->join('contents','contents.category','=','category.id')
-                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-                ->where('category', '=', '5')->get();
-        }
-        elseif ($category == 'egitim')
-        {
-            return DB::table('category')
-                ->join('contents','contents.category','=','category.id')
-                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-                ->where('category', '=', '6')->get();
-        }  elseif ($category == 'teknoloji')
-        {
-            return DB::table('category')
-                ->join('contents','contents.category','=','category.id')
-                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-                ->where('category', '=', '7')->get();
-        }
-        else
-        {
-            return Contents::all();
-        }
-    }
+//    public function getContent($category=null)
+//    {
+//        if ($category == 'spor') {
+//            return DB::table('contents')->where('category', '=', '1')->get();
+//        }
+//        elseif ($category == 'finans')
+//        {
+//            return DB::table('category')
+//                ->join('contents','contents.category','=','category.id')
+//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
+//                ->where('category', '=', '2')->get();
+//        }
+//        elseif ($category == 'magazin')
+//        {
+//            return DB::table('category')
+//                ->join('contents','contents.category','=','category.id')
+//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
+//                ->where('category', '=', '3')->get();
+//        }
+//        elseif ($category == 'politika')
+//        {
+//            return DB::table('category')
+//                ->join('contents','contents.category','=','category.id')
+//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
+//                ->where('category', '=', '4')->get();
+//        }
+//        elseif ($category == 'saglik')
+//        {
+//            return DB::table('category')
+//                ->join('contents','contents.category','=','category.id')
+//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
+//                ->where('category', '=', '5')->get();
+//        }
+//        elseif ($category == 'egitim')
+//        {
+//            return DB::table('category')
+//                ->join('contents','contents.category','=','category.id')
+//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
+//                ->where('category', '=', '6')->get();
+//        }  elseif ($category == 'teknoloji')
+//        {
+//            return DB::table('category')
+//                ->join('contents','contents.category','=','category.id')
+//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
+//                ->where('category', '=', '7')->get();
+//        }
+//        else
+//        {
+//            return Contents::all();
+//        }
+//    }
 
 
 }

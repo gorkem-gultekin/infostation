@@ -47,10 +47,10 @@
                 <ul class="nav-menu nav navbar-nav">
                     <li><a href="/">Anasayfa</a></li>
                     <li><a href="category.html">Popüler</a></li>
-                    <li class="cat-1"><a href="category.html">Donanım</a></li>
-                    <li class="cat-2"><a href="category.html">Mobil</a></li>
-                    <li class="cat-3"><a href="category.html">Oyun</a></li>
-                    <li class="cat-4"><a href="category.html">Yazılım</a></li>
+                    <li class="cat-1"><a href="/category/donanim">Donanım</a></li>
+                    <li class="cat-2"><a href="/category/mobil">Mobil</a></li>
+                    <li class="cat-3"><a href="/category/oyun">Oyun</a></li>
+                    <li class="cat-4"><a href="/category/yazilim">Yazılım</a></li>
                 </ul>
                 <!-- /nav -->
 
@@ -133,6 +133,7 @@
         <!-- Aside Nav -->
     </div>
     <!-- /Nav -->
+    @yield('category-title')
 </header>
 <!-- /Header -->
 
@@ -143,21 +144,28 @@
         <!-- row -->
     @yield('index1')
     <!-- /row -->
-
         <!-- row -->
     @yield('index2')
-
     <!-- /row -->
-
         <!-- row -->
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
                     @yield('index3')
+                    @yield('category-post')
                 </div>
             </div>
 
+
             <div class="col-md-4">
+                <!-- ad -->
+                <div class="aside-widget text-center">
+                    <a href="#" style="display: inline-block;margin: auto;">
+                        <center>REKLAM ALANI</center>
+                        <img class="img-responsive" src="{{asset('home/./img/ad-1.jpg')}}" alt="">
+                    </a>
+                </div>
+                <!-- /ad -->
                 <!-- post widget -->
                 <div class="aside-widget">
                     <div class="section-title">
@@ -210,10 +218,10 @@
                     </div>
                     <div class="category-widget">
                         <ul>
-                            <li><a href="#" class="cat-1">Donanım<span>{{$viewing[1]}}</span></a></li>
-                            <li><a href="#" class="cat-2">Mobil<span>{{$viewing[2]}}</span></a></li>
-                            <li><a href="#" class="cat-3">Oyun<span>{{$viewing[3]}}</span></a></li>
-                            <li><a href="#" class="cat-4">Yazılım<span>{{$viewing[4]}}</span></a></li>
+                            <li><a href="/category/donanim" class="cat-1">Donanım<span>{{$viewing[1]}}</span></a></li>
+                            <li><a href="/category/mobil" class="cat-2">Mobil<span>{{$viewing[2]}}</span></a></li>
+                            <li><a href="/category/oyun" class="cat-3">Oyun<span>{{$viewing[3]}}</span></a></li>
+                            <li><a href="/category/yazilim" class="cat-4">Yazılım<span>{{$viewing[4]}}</span></a></li>
                         </ul>
                     </div>
                 </div>

@@ -67,5 +67,26 @@ class HomeController extends Controller
         }
         return view('content-post', compact(['contents', 'mostRead', 'viewing', 'user']));
     }
+    public function categoryView($category)
+    {
+        $mostRead = DB::table('category')
+            ->join('contents', 'contents.category', '=', 'category.id')
+            ->where('is_approve', '=', '1')
+            ->orderBy('viewing', 'desc')
+            ->select()->get();
+        for ($i = 1; $i <= 4; $i++) {
+            $viewing[$i] = DB::table('contents')
+                ->where('category', '=', $i)
+                ->count();
+        }
+        $name = ucwords(str_replace('i','ı',$category));
+            $categoryName = DB::table('category')
+                ->join('contents', 'contents.category', '=', 'category.id')
+                ->where('category.name', '=', $name)
+                ->orderBy('published_at', 'desc')
+                ->select()->get();
+
+        return view('category',compact(['categoryName','mostRead','viewing']));
+    }
 
 }

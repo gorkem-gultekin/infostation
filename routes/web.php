@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 //});
 Route::get('/','HomeController@index');
 Route::get('/content-post/{id}','HomeController@contentPost');
+Route::get('/category/{category}','HomeController@categoryView');
 
 
 Route::get('/mail',function (){return view('email.register-mail');});
