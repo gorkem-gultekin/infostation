@@ -8,7 +8,7 @@ class UploadPaths
 {
     public static $uploadPaths=array(
         'content_photos'=>'/uploads/content',
-        'profile_photos'=>'uploads/profiles'
+        'profile_photos'=>'/uploads/profiles'
     );
     public static function getUploadPath($path)
     {

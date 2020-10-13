@@ -1,4 +1,7 @@
 @extends('layouts.admin-master')
+@section('users-active')
+    active
+@endsection
 @section('title')
     <h4 class="page-title pull-left">Users</h4>
     <ul class="breadcrumbs pull-left">

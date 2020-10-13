@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Contents;
 use App\Helpers\UploadPaths;
-use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\File;
-use function GuzzleHttp\Promise\all;
 
 class ContentController extends Controller
 {
@@ -29,19 +25,23 @@ class ContentController extends Controller
 
     public function contentCreate(Request $request)
     {
+        $title = $request->get('title');
+        $search = array('Ç', 'ç', 'Ğ', 'ğ', 'ı', 'İ', 'Ö', 'ö', 'Ş', 'ş', 'Ü', 'ü', ' ');
+        $replace = array('c', 'c', 'g', 'g', 'i', 'i', 'o', 'o', 's', 's', 'u', 'u', '-');
         $filePhotoUrl = $request->file('photo');
         if (isset($filePhotoUrl)) {
             $contentPhotoName = uniqid('content_') . '.' . $filePhotoUrl->getClientOriginalExtension();
             $filePhotoUrl->move(UploadPaths::getUploadPath('content_photos'), $contentPhotoName);
         }
         Contents::create([
-            'title' => $request->get('title'),
+            'title' => $title,
             'text' => $request->get('text'),
             'photo' => $contentPhotoName,
             'is_approve' => false,
             'writer' => Auth::user()->id,
             'organizer' => Auth::user()->id,
-            'category' => $request->get('category')
+            'category' => $request->get('category'),
+            'search_title' => mb_strtolower(str_replace($search, $replace, $title))
         ]);
         session()->flash('content-success', 'Success to Save Content');
         return back();
@@ -51,7 +51,6 @@ class ContentController extends Controller
     {
         $contents = DB::table('contents')->where('is_approve', '=', '1')->where('deleted_at', '=', null)->get();
         return view('admin.content.published', compact('contents'));
-
     }
 
     public function contentPublished($id)
@@ -69,19 +68,32 @@ class ContentController extends Controller
 
     public function contentEdit(Request $request, $id)
     {
+        $title = $request->get('title');
+        $search = array('Ç', 'ç', 'Ğ', 'ğ', 'ı', 'İ', 'Ö', 'ö', 'Ş', 'ş', 'Ü', 'ü', ' ');
+        $replace = array('c', 'c', 'g', 'g', 'i', 'i', 'o', 'o', 's', 's', 'u', 'u', '-');
         $filePhotoUrl = $request->file('photo');
-        if (isset($filePhotoUrl)) {
+        if ($filePhotoUrl == null) {
+            Contents::where('id', $id)->update([
+                'title' => $title,
+                'text' => $request->get('text'),
+                'is_approve' => false,
+                'organizer' => Auth::user()->id,
+                'updated_at' => Carbon::now(),
+                'search_title' => mb_strtolower(str_replace($search, $replace, $title))
+            ]);
+        } else {
             $contentPhotoName = uniqid('content_') . '.' . $filePhotoUrl->getClientOriginalExtension();
             $filePhotoUrl->move(UploadPaths::getUploadPath('content_photos'), $contentPhotoName);
+            Contents::where('id', $id)->update([
+                'title' => $title,
+                'text' => $request->get('text'),
+                'photo' => $contentPhotoName,
+                'is_approve' => false,
+                'organizer' => Auth::user()->id,
+                'updated_at' => Carbon::now(),
+                'search_title' => mb_strtolower(str_replace($search, $replace, $title))
+            ]);
         }
-        Contents::where('id', $id)->update([
-            'title' => $request->get('title'),
-            'text' => $request->get('text'),
-            'photo' => $contentPhotoName,
-            'is_approve' => false,
-            'organizer' => Auth::user()->id,
-            'updated_at' => Carbon::now(),
-        ]);
         session()->flash('content-edit', ' Successfully Modified');
         return back();
     }
@@ -105,58 +117,5 @@ class ContentController extends Controller
         session()->flash('content-hard-delete', 'Successfully Hard Deleted');
         return back();
     }
-
-//    public function getContent($category=null)
-//    {
-//        if ($category == 'spor') {
-//            return DB::table('contents')->where('category', '=', '1')->get();
-//        }
-//        elseif ($category == 'finans')
-//        {
-//            return DB::table('category')
-//                ->join('contents','contents.category','=','category.id')
-//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-//                ->where('category', '=', '2')->get();
-//        }
-//        elseif ($category == 'magazin')
-//        {
-//            return DB::table('category')
-//                ->join('contents','contents.category','=','category.id')
-//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-//                ->where('category', '=', '3')->get();
-//        }
-//        elseif ($category == 'politika')
-//        {
-//            return DB::table('category')
-//                ->join('contents','contents.category','=','category.id')
-//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-//                ->where('category', '=', '4')->get();
-//        }
-//        elseif ($category == 'saglik')
-//        {
-//            return DB::table('category')
-//                ->join('contents','contents.category','=','category.id')
-//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-//                ->where('category', '=', '5')->get();
-//        }
-//        elseif ($category == 'egitim')
-//        {
-//            return DB::table('category')
-//                ->join('contents','contents.category','=','category.id')
-//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-//                ->where('category', '=', '6')->get();
-//        }  elseif ($category == 'teknoloji')
-//        {
-//            return DB::table('category')
-//                ->join('contents','contents.category','=','category.id')
-//                ->select('contents.id','contents.title','contents.text','contents.photo','category.name')
-//                ->where('category', '=', '7')->get();
-//        }
-//        else
-//        {
-//            return Contents::all();
-//        }
-//    }
-
 
 }

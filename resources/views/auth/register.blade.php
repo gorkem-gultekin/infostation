@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <!doctype html>
 <html class="no-js" lang="en">

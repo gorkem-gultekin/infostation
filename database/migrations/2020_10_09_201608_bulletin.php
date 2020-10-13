@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Role extends Migration
+class Bulletin extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class Role extends Migration
      */
     public function up()
     {
-        Schema::create('role', function (Blueprint $table) {
+        Schema::create('bulletin', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('email')->unique();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -26,6 +25,6 @@ class Role extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role');
+        Schema::dropIfExists('bulletin');
     }
 }

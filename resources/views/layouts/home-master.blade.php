@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>WebMag HTML Template</title>
+    <title>InfoStation</title>
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet">
@@ -46,7 +46,7 @@
                 <!-- nav -->
                 <ul class="nav-menu nav navbar-nav">
                     <li><a href="/">Anasayfa</a></li>
-                    <li><a href="category.html">Popüler</a></li>
+                    <li><a href="/category/populer">Popüler</a></li>
                     <li class="cat-1"><a href="/category/donanim">Donanım</a></li>
                     <li class="cat-2"><a href="/category/mobil">Mobil</a></li>
                     <li class="cat-3"><a href="/category/oyun">Oyun</a></li>
@@ -173,10 +173,11 @@
                     </div>
                     @foreach($mostRead->slice(0,4) as $most)
                         <div class="post post-widget">
-                            <a class="post-img" href="blog-post.html"><img
-                                    src="{{asset('home/./img/widget-1.jpg')}}" alt=""></a>
+                            <a class="post-img" href="{{$most->search_title}}"><img
+                                    src="{{(asset('/uploads/content/').'/'.$most->photo)}}" alt="" height="80"
+                                    width="50"></a>
                             <div class="post-body">
-                                <h3 class="post-title"><a href="blog-post.html">{{$most->title}}</a></h3>
+                                <h3 class="post-title"><a href="/{{$most->search_title}}">{{$most->title}}</a></h3>
                             </div>
                             Görüntülenme: <span class="visible">{{$most->viewing}}</span>
                         </div>
@@ -187,27 +188,40 @@
                 <!-- post widget -->
                 <div class="aside-widget">
                     <div class="section-title">
-                        <h2>Featured Posts</h2>
+                        <h2>Öne Çıkan Haberler</h2>
                     </div>
-                    <div class="post post-thumb">
-                        <a class="post-img" href="blog-post.html"><img src="{{asset('home/./img/post-2.jpg')}}" alt=""></a>
-                        <div class="post-body">
-                            <div class="post-meta">
-                                <a class="post-category cat-3" href="category.html">Jquery</a>
-                                <span class="post-date">March 27, 2018</span>
-                            </div>
-                            <h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use JQuery?</a>
-                            </h3>
-                        </div>
-                    </div>
+                    @foreach($featuredPosts->slice(0,2) as $featured)
+                        <div class="post post-thumb">
 
+                            <a class="post-img" href="/{{$featured->search_title}}"><img
+                                    src="{{(asset('/uploads/content/').'/'.$featured->photo)}}"
+                                    alt=""></a>
+                            <div class="post-body">
+                                <div class="post-meta">
+                                    @if($featured->name=='Donanım')
+                                        <a class="post-category cat-1" href="/category/donanim">{{$featured->name}}</a>
+                                    @elseif($featured->name=='Mobil')
+                                        <a class="post-category cat-2" href="/category/mobil">{{$featured->name}}</a>
+                                    @elseif($featured->name=='Oyun')
+                                        <a class="post-category cat-3" href="/category/oyun">{{$featured->name}}</a>
+                                    @elseif($featured->name=='Yazılım')
+                                        <a class="post-category cat-4" href="/category/yazilim">{{$featured->name}}</a>
+                                    @endif
+                                    <span class="post-date">{{date("d/m/Y",strtotime($featured->published_at))}}</span>
+                                </div>
+                                <h3 class="post-title"><a href="/{{$featured->search_title}}">{{$featured->title}}</a>
+                                </h3>
+                            </div>
+
+                        </div>
+                    @endforeach
                 </div>
                 <!-- /post widget -->
 
                 <!-- ad -->
                 <div class="aside-widget text-center">
                     <a href="#" style="display: inline-block;margin: auto;">
-                        <img class="img-responsive" src="./img/ad-1.jpg" alt="">
+                        <img class="img-responsive" src="{{asset('home/./img/ad-1.jpg')}}" alt="">
                     </a>
                 </div>
                 <!-- /ad -->
@@ -218,10 +232,10 @@
                     </div>
                     <div class="category-widget">
                         <ul>
-                            <li><a href="/category/donanim" class="cat-1">Donanım<span>{{$viewing[1]}}</span></a></li>
-                            <li><a href="/category/mobil" class="cat-2">Mobil<span>{{$viewing[2]}}</span></a></li>
-                            <li><a href="/category/oyun" class="cat-3">Oyun<span>{{$viewing[3]}}</span></a></li>
-                            <li><a href="/category/yazilim" class="cat-4">Yazılım<span>{{$viewing[4]}}</span></a></li>
+                            <li><a href="/category/donanim" class="cat-1">Donanım<span>{{$piece[1]}}</span></a></li>
+                            <li><a href="/category/mobil" class="cat-2">Mobil<span>{{$piece[2]}}</span></a></li>
+                            <li><a href="/category/oyun" class="cat-3">Oyun<span>{{$piece[3]}}</span></a></li>
+                            <li><a href="/category/yazilim" class="cat-4">Yazılım<span>{{$piece[4]}}</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -230,15 +244,13 @@
                 <div class="aside-widget">
                     <div class="tags-widget">
                         <ul>
-                            <li><a href="#">Chrome</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">Tutorial</a></li>
-                            <li><a href="#">Backend</a></li>
-                            <li><a href="#">JQuery</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Development</a></li>
-                            <li><a href="#">JavaScript</a></li>
-                            <li><a href="#">Website</a></li>
+                            <li><a href="#">Teknoloji</a></li>
+                            <li><a href="#">Donanım</a></li>
+                            <li><a href="#">Mobil</a></li>
+                            <li><a href="#">Oyun</a></li>
+                            <li><a href="#">Yazılım</a></li>
+                            <li><a href="#">Bilgi</a></li>
+                            <li><a href="#">infoStation</a></li>
                         </ul>
                     </div>
                 </div>
@@ -289,10 +301,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         <div class="footer-widget">
                             <h3 class="footer-title">Kategoriler</h3>
                             <ul class="footer-links">
-                                <li><a href="category.html">Donanım</a></li>
-                                <li><a href="category.html">Mobil</a></li>
-                                <li><a href="category.html">Oyun</a></li>
-                                <li><a href="category.html">Yazılım</a></li>
+                                <li><a href="/category/donanim">Donanım</a></li>
+                                <li><a href="/category/mobil">Mobil</a></li>
+                                <li><a href="/category/oyun">Oyun</a></li>
+                                <li><a href="/category/yazilim">Yazılım</a></li>
                             </ul>
                         </div>
                     </div>
@@ -303,9 +315,19 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 <div class="footer-widget">
                     <h3 class="footer-title">Bültenimize Katılın</h3>
                     <div class="footer-newsletter">
-                        <form>
-                            <input class="input" type="email" name="newsletter" placeholder="E-postanızı Giriniz.">
-                            <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+                        <form method="POST" action="/bulletin">
+                            @csrf
+                            <input class="input" id="email" type="email" name="email"
+                                   placeholder="E-postanızı Giriniz.">
+                            <button type="submit" class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+                            @if (session('bulletin-success'))
+                                <div class="alert alert-success" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    &nbsp;{{ session('bulletin-success') }}
+                                </div>
+                            @endif
                         </form>
                     </div>
                     <ul class="footer-social">

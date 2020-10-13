@@ -1,4 +1,11 @@
 @extends('layouts.admin-master')
+@section('content-active')
+    active
+@endsection
+@section('deleted-active')
+    active
+@endsection
+
 @section('title')
     <h4 class="page-title pull-left">Deleted Content</h4>
     <ul class="breadcrumbs pull-left">
@@ -50,8 +57,9 @@
                         </p>
                     </div>
                 </div>
+            @endforeach
         </div>
-        @endforeach
+
     </div>
     </div>
 @endsection

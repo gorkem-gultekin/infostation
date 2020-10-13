@@ -1,31 +1,31 @@
 @extends('layouts.home-master')
 @section('content-header')
     @foreach($contents as $content)
-<div id="post-header" class="page-header">
-    <div class="background-img" style="background-image: url('{{asset('home/./img/post-page.jpg')}}');"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10">
-                <div class="post-meta">
-                    @if($content->name=='Donanım')
-                        <a class="post-category cat-1" href="category.html">{{$content->name}}</a>
-                    @elseif($content->name=='Mobil')
-                        <a class="post-category cat-2" href="category.html">{{$content->name}}</a>
-                    @elseif($content->name=='Oyun')
-                        <a class="post-category cat-3" href="category.html">{{$content->name}}</a>
-                    @elseif($content->name=='Yazılım')
-                        <a class="post-category cat-4" href="category.html">{{$content->name}}</a>
-                    @endif
-                    <span class="post-date">{{date("d/m/Y",strtotime($content->published_at))}}</span>
+        <div id="post-header" class="page-header">
+            <div class="background-img" style="background-image: url('{{asset('home/./img/post-page.jpg')}}');"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="post-meta">
+                            @if($content->name=='Donanım')
+                                <a class="post-category cat-1" href="category.html">{{$content->name}}</a>
+                            @elseif($content->name=='Mobil')
+                                <a class="post-category cat-2" href="category.html">{{$content->name}}</a>
+                            @elseif($content->name=='Oyun')
+                                <a class="post-category cat-3" href="category.html">{{$content->name}}</a>
+                            @elseif($content->name=='Yazılım')
+                                <a class="post-category cat-4" href="category.html">{{$content->name}}</a>
+                            @endif
+                            <span class="post-date">{{date("d/m/Y",strtotime($content->published_at))}}</span>
+                        </div>
+                        <h1>{{$content->title}}</h1>
+                    </div>
                 </div>
-                <h1>{{$content->title}}</h1>
             </div>
         </div>
-    </div>
-</div>
     @endforeach
 @endsection
-@section('home')
+@section('index3')
     <div class="section">
         <!-- container -->
         <div class="container">
@@ -36,15 +36,13 @@
                     <div class="section-row sticky-container">
                         <div class="main-post">
                             <h3>{{$content->title}}</h3>
-                            <p>Do you like Cheese Whiz? Spray tan? Fake eyelashes? That's what is Lorem Ipsum to many—it rubs them the wrong way, all the way. It's unreal, uncanny, makes you wonder if something is wrong, it seems to seek your attention for all the wrong reasons. Usually, we prefer the real thing, wine without sulfur based preservatives, real butter, not margarine, and so we'd like our layouts and designs to be filled with real words, with thoughts that count, information that has value. </p>
-                           <figure class="figure-img">
-                                <img class="img-responsive" src="{{(asset('/uploads/content/').'/'.$content->photo)}}" alt="">
-                            </figure>
-                            <p>You begin with a text, you sculpt information, you chisel away what's not needed, you come to the point, make things clear, add value, you're a content person, you like words. Design is no afterthought, far from it, but it comes in a deserved second. Anyway, you still use Lorem Ipsum and rightly so, as it will always have a place in the web workers toolbox, as things happen, not always the way you like it, not always in the preferred order. Even if your less into design and more into content strategy you may find some redeeming value with, wait for it, dummy copy, no less.</p>
-                            <p>There's lot of hate out there for a text that amounts to little more than garbled words in an old language. The villagers are out there with a vengeance to get that Frankenstein, wielding torches and pitchforks, wanting to tar and feather it at the least, running it out of town in shame.</p>
-                            <p>One of the villagers, Kristina Halvorson from Adaptive Path, holds steadfastly to the notion that design can’t be tested without real content:</p>
 
-                            <p>If that's what you think how bout the other way around? How can you evaluate content without design? No typography, no colors, no layout, no styles, all those things that convey the important signals that go beyond the mere textual, hierarchies of information, weight, emphasis, oblique stresses, priorities, all those subtle cues that also have visual and emotional appeal to the reader. Rigid proponents of content strategy may shun the use of dummy copy but then designers might want to ask them to provide style sheets with the copy decks they supply that are in tune with the design direction they require.</p>
+                            {{--                            buraya ilk paragraf--}}
+                            <figure class="figure-img">
+                                <img class="img-responsive" src="{{(asset('/uploads/content/').'/'.$content->photo)}}"
+                                     alt="">
+                            </figure>
+                            <p>{{$content->text}}</p>
                         </div>
                         <div class="post-shares sticky-shares">
                             <a href="#" class="share-facebook"><i class="fa fa-facebook"></i></a>
@@ -59,11 +57,11 @@
                     <!-- ad -->
                     <div class="section-row text-center">
                         <a href="#" style="display: inline-block;margin: auto;">
-                            <img class="img-responsive" src="./img/ad-2.jpg" alt="">
+                            <h1>REKLAM ALANI</h1>
+                            <img class="img-responsive" src="{{asset('home/img/ad-2.jpg')}}" alt="">
                         </a>
                     </div>
                     <!-- ad -->
-
                     <!-- author -->
                     <div class="section-row">
                         <div class="post-author">
@@ -72,18 +70,16 @@
                                     <img class="media-object" src="./img/author.png" alt="">
                                 </div>
                                 <div class="media-body">
-                                    <div class="media-heading">
-                                        @foreach($user as $us)
-                                        <h3>{{$us->name}}</h3>
-                                        @endforeach
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                    <ul class="author-social">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    </ul>
+                                    @foreach($user as $us)
+                                        <div class="media-heading">
+                                            <h3>{{$us->name}}</h3>
+                                        </div>
+                                        <ul class="author-social">
+                                            <li><a href="mailto:{{$us->email}}"><i title="E-Mail"
+                                                                                   class="fa fa-mail-forward"></i></a>
+                                            </li>
+                                        </ul>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -107,7 +103,10 @@
                                         <h4>John Doe</h4>
                                         <span class="time">March 27, 2018 at 8:00 am</span>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                        consequat.</p>
 
 
                                     <!-- /comment -->
@@ -125,7 +124,10 @@
                                         <h4>John Doe</h4>
                                         <span class="time">March 27, 2018 at 8:00 am</span>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                        consequat.</p>
                                 </div>
                             </div>
                             <!-- /comment -->
@@ -173,87 +175,7 @@
                 <!-- /Post content -->
 
                 <!-- aside -->
-                <div class="col-md-4">
-                    <!-- ad -->
-                    <div class="aside-widget text-center">
-                        <a href="#" style="display: inline-block;margin: auto;">
-                            <img class="img-responsive" src="./img/ad-1.jpg" alt="">
-                        </a>
-                    </div>
-                    <!-- /ad -->
 
-                    <!-- post widget -->
-                    <div class="aside-widget">
-                        <div class="section-title">
-                            <h2>Most Read</h2>
-                        </div>
-                        @foreach($mostRead->slice(0,4) as $most)
-                            <div class="post post-widget">
-                                <a class="post-img" href="blog-post.html"><img
-                                        src="{{asset('home/./img/widget-1.jpg')}}" alt=""></a>
-                                <div class="post-body">
-                                    <h3 class="post-title"><a href="blog-post.html">{{$most->title}}</a></h3>
-                                </div>
-                                Görüntülenme: <span class="visible">{{$most->viewing}}</span>
-                            </div>
-                        @endforeach
-                    </div>
-                    <!-- /post widget -->
-
-                    <!-- post widget -->
-                    <div class="aside-widget">
-                        <div class="section-title">
-                            <h2>Featured Posts</h2>
-                        </div>
-                        <div class="post post-thumb">
-                            <a class="post-img" href="blog-post.html"><img src="{{asset('home/./img/post-2.jpg')}}" alt=""></a>
-                            <div class="post-body">
-                                <div class="post-meta">
-                                    <a class="post-category cat-3" href="#">Jquery</a>
-                                    <span class="post-date">March 27, 2018</span>
-                                </div>
-                                <h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use JQuery?</a></h3>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- /post widget -->
-
-                    <!-- catagories -->
-                    <div class="aside-widget">
-                        <div class="section-title">
-                            <h2>Catagories</h2>
-                        </div>
-                        <div class="category-widget">
-                            <ul>
-                                <li><a href="#" class="cat-1">Donanım<span>{{$viewing[1]}}</span></a></li>
-                                <li><a href="#" class="cat-2">Mobil<span>{{$viewing[2]}}</span></a></li>
-                                <li><a href="#" class="cat-3">Oyun<span>{{$viewing[3]}}</span></a></li>
-                                <li><a href="#" class="cat-4">Yazılım<span>{{$viewing[4]}}</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /catagories -->
-
-                    <!-- tags -->
-                    <div class="aside-widget">
-                        <div class="tags-widget">
-                            <ul>
-                                <li><a href="#">Chrome</a></li>
-                                <li><a href="#">CSS</a></li>
-                                <li><a href="#">Tutorial</a></li>
-                                <li><a href="#">Backend</a></li>
-                                <li><a href="#">JQuery</a></li>
-                                <li><a href="#">Design</a></li>
-                                <li><a href="#">Development</a></li>
-                                <li><a href="#">JavaScript</a></li>
-                                <li><a href="#">Website</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /tags -->
-
-                </div>
                 <!-- /aside -->
             </div>
             <!-- /row -->

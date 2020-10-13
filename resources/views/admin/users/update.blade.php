@@ -5,7 +5,7 @@
         <div class="card ">
             <div class="card-body">
                 <h4 class="header-title">User</h4>
-                <form class="needs-validation" novalidate="" method="post" action="/update/{{$user->id}}">
+                <form class="needs-validation" novalidate="" method="post" action="/update/{{$user->id}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
@@ -35,10 +35,13 @@
                             <input class="form-control " id="cemail" type="email" name="email"
                                    value="{{$user->email}}"
                                    required/>
-                            <div class="invalid-feedback">
-                                Please provide a valid city.
-                            </div>
                         </div>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" name="photo" class="custom-file-input" id="validatedCustomFile"
+                        >
+                        <label class="custom-file-label" for="validatedCustomFile">Choose Profile Photo...</label>
+                        <div class="invalid-feedback">Please select Picture.</div>
                     </div>
                     <div class="form-group">
                         <p align="center">

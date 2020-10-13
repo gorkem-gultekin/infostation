@@ -36,7 +36,7 @@
     <div class="sidebar-menu">
         <div class="sidebar-header">
             <div class="logo">
-                <!--<a href="#"><img src="assets/images/icon/logo.png" alt="logo"></a>-->
+{{--                <a href="#"><img src="{{asset('assets/images/icon/logo.png')}}" alt="logo"></a>--}}
                 <h1 style="color: white">InfoStation</h1>
             </div>
         </div>
@@ -44,22 +44,22 @@
             <div class="menu-inner">
                 <nav>
                     <ul class="metismenu" id="menu">
-                        <li><a href="{{route('home')}}"><i class="ti-home"></i> <span>home</span></a></li>
+                        <li class="@yield('home-active')"><a href="{{route('home')}}"><i class="ti-home"></i> <span>home</span></a></li>
 
-                        <li class="active">
+                        <li class="@yield('content-active')">
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Content</span></a>
                             <ul class="collapse">
-                                <li><a href="{{route('new-content')}}"><i
+                                <li class="@yield('new-active')"><a href="{{route('new-content')}}"><i
                                             class="ti-marker-alt"></i><span>New Content</span></a>
                                 </li><!-- active edit-->
-                                <li><a href="pending"><i class="ti-save"></i><span>Pending Approval</span></a></li>
-                                <li><a href="{{route('published-content')}}"><i
+                                <li class="@yield('pending-active')"><a href="{{route('pending')}}"><i class="ti-save"></i><span>Pending Approval</span></a></li>
+                                <li class="@yield('published-active')"><a href="{{route('published-content')}}"><i
                                             class="ti-eye"></i><span>Published</span> </a></li>
-                                <li><a href="{{route('deleted-content')}}"><i
+                                <li class="@yield('deleted-active')"><a href="{{route('deleted-content')}}"><i
                                             class="ti-trash"></i><span>Deleted Content</span></a></li>
                             </ul>
                         </li>
-                        <li><a href="users"><i class="ti-user"></i> <span>users</span></a></li>
+                        <li class="@yield('users-active')"><a href="{{route('users')}}"><i class="ti-user"></i> <span>users</span></a></li>
                         <li>
                             <a href="javascript:void(0)" aria-expanded="true"><i
                                     class="ti-layout-sidebar-left"></i><span>Sidebar
@@ -170,9 +170,10 @@
                         <li id="full-view"><i class="ti-fullscreen"></i></li>
                         <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                         <li class="dropdown">
-                            <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
-                                <span>2</span>
-                            </i>
+{{--                            bildirim butonu--}}
+{{--                            <i class="ti-bell dropdown-toggle" data-toggle="dropdown">--}}
+{{--                                <span>2</span>--}}
+{{--                            </i>--}}
                             <div class="dropdown-menu bell-notify-box notify-box">
                                 <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
                                 <div class="nofity-list">
@@ -285,7 +286,7 @@
                 </div>
                 <div class="col-sm-6 clearfix">
                     <div class="user-profile pull-right">
-                        <img class="avatar user-thumb" src="{{asset('assets/images/author/avatar.png')}}" alt="avatar">
+                        <img class="avatar user-thumb" src="{{asset('uploads/profiles/').'/'.Auth::user()->photo }}" alt="avatar">
                         <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <i
                                 class="fa fa-angle-down"></i></h4>
                         <div class="dropdown-menu">
@@ -311,7 +312,7 @@
     <!-- footer area start-->
     <footer>
         <div class="footer-area">
-            <p>© Copyright 2018. All right reserved.</p>
+            <p>© Copyright 2020. All right reserved.</p>
         </div>
     </footer>
     <!-- footer area end-->

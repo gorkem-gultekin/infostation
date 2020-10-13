@@ -1,6 +1,12 @@
 @extends('layouts.admin-master')
+@section('content-active')
+    active
+@endsection
+@section('edit-active')
+    active
+@endsection
 @section('title')
-    <h4 class="page-title pull-left">New Content</h4>
+    <h4 class="page-title pull-left">Edit Content</h4>
     <ul class="breadcrumbs pull-left">
         <li><a href="{{route('home')}}">Home</a></li>
         <li><span>Edit Content</span></li>

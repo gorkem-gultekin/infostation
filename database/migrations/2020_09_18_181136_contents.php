@@ -24,6 +24,7 @@ class Contents extends Migration
             $table->integer('viewing')->nullable();
             $table->string('category');
             $table->timestamp('published_at')->nullable();
+            $table->string('search_title');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

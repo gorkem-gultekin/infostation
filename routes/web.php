@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,18 +18,18 @@ use Illuminate\Support\Facades\Route;
 //    return view('index');
 //});
 Route::get('/','HomeController@index');
-Route::get('/content-post/{id}','HomeController@contentPost');
+Route::get('/{search_title}','HomeController@contentPost');
 Route::get('/category/{category}','HomeController@categoryView');
+Route::post('/bulletin','HomeController@bulletin');
 
-
+//Auth::routes(['verify' => true]); //for verify email
 Route::get('/mail',function (){return view('email.register-mail');});
 Auth::routes();//login register
-//Auth::routes(['verify' => true]); //for verify email
 
 Route::group(['middleware' => 'auth'], function () {
     //giriş yapıldıktan sonra gelicek roouterlar buraya yazılmalı
     //------------Admin Controller------------
-    Route::get('/home', 'AdminController@index')->name('home');
+    Route::get('/admin', 'AdminController@index')->name('home');
     Route::get('/users', 'AdminController@indexView')->name('users');
     Route::post('/user-import', 'ExcelUploadController@userImport')->name('user-import');//excel user added
     Route::get('/user-export', 'ExcelDownloadController@userExport')->name('user-export');//excel user download
@@ -38,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/create', 'AdminController@userCreate');
 
     //------------Content Controller------------
-    Route::get('/pending', 'ContentController@pendingView');//pending content page view
+    Route::get('/pending', 'ContentController@pendingView')->name('pending');//pending content page view
     Route::get('/published', 'ContentController@publishedView')->name('published-content');//published content page view
     Route::get('/new-content', 'ContentController@newcontentView')->name('new-content');//new content page view
     Route::get('/deleted-content','ContentController@deletedView')->name('deleted-content');//deleted content
@@ -54,4 +55,4 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-//Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'AdminController@index')->name('home');

@@ -1,4 +1,10 @@
 @extends('layouts.admin-master')
+@section('content-active')
+    active
+@endsection
+@section('new-active')
+    active
+@endsection
 @section('title')
     <h4 class="page-title pull-left">New Content</h4>
     <ul class="breadcrumbs pull-left">
@@ -7,7 +13,6 @@
     </ul>
 @endsection
 @section('content')
-
     <div class="main-content-inner">
         @if (session('content-success'))
             <div class="alert alert-success" role="alert">

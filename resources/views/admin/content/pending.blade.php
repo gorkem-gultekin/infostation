@@ -1,4 +1,10 @@
 @extends('layouts.admin-master')
+@section('content-active')
+    active
+@endsection
+@section('pending-active')
+    active
+@endsection
 @section('title')
     <h4 class="page-title pull-left">Pending Approval</h4>
     <ul class="breadcrumbs pull-left">
