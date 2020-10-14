@@ -23,6 +23,7 @@ Route::get('/category/{category}','HomeController@categoryView');
 Route::post('/bulletin','HomeController@bulletin');
 Route::get('/iletisim','HomeController@contactView');
 Route::post('/message','HomeController@contactMessage');
+Route::post('comment-create/{id}','HomeController@commentCreate')->where(array('id'=>'[0-9]+'))->name('comment-create');//comment save
 
 //Auth::routes(['verify' => true]); //for verify email
 Route::get('/mail',function (){return view('email.register-mail');});

@@ -78,16 +78,17 @@
             <div class="section-row">
                 <h3>Öne Çıkan Haberler</h3>
                 @foreach($featuredPosts->slice(0,3) as $featured)
-                <div class="post post-widget">
+                    <div class="post post-widget">
 
                         <a class="post-img" href="/content-post/{{$featured->search_title}}"><img
                                 src="{{(asset('/uploads/content/').'/'.$featured->photo)}}"
                                 alt=""></a>
                         <div class="post-body">
-                            <h3 class="post-title"><a href="/content-post/{{$featured->search_title}}">{{$featured->title}}</a></h3>
+                            <h3 class="post-title"><a
+                                    href="/content-post/{{$featured->search_title}}">{{$featured->title}}</a></h3>
                         </div>
 
-                </div>
+                    </div>
                 @endforeach
             </div>
             <!-- /widget posts -->
@@ -269,10 +270,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 <div class="row">
                     <div class="col-md-6">
                         <div class="footer-widget">
-                            <h3 class="footer-title">About Us</h3>
+                            <h3 class="footer-title">Hakkımızda</h3>
                             <ul class="footer-links">
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="#">Join Us</a></li>
+
                                 <li><a href="/iletisim">İletişim</a></li>
                             </ul>
                         </div>

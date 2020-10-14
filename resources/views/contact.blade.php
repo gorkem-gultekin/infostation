@@ -40,18 +40,18 @@
                                 <div class="col-md-7">
                                     <div class="form-group">
                                         <span>Email</span>
-                                        <input class="input" type="email" name="email">
+                                        <input class="input" type="email" name="email" required>
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="form-group">
                                         <span>Konu</span>
-                                        <input class="input" type="text" name="subject">
+                                        <input class="input" type="text" name="subject" required>
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="form-group">
-                                        <textarea class="input" name="message" placeholder="Mesaj" rows="6"></textarea>
+                                        <textarea class="input" name="message" placeholder="Mesaj" rows="6" required></textarea>
                                     </div>
                                     <button type="submit" class="primary-button">Gönder</button>
                                 </div>

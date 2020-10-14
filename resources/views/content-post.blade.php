@@ -1,32 +1,21 @@
 @extends('layouts.home-master')
 @section('page-title')
-{{$contents[0]->title}}
+    {{$contents[0]->title}}
 @endsection
-@section('content-header')
-    @foreach($contents as $content)
-        <div id="post-header" class="page-header">
-            <div class="background-img" style="background-image: url('{{asset('home/./img/post-page.jpg')}}');"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10">
-                        <div class="post-meta">
-                            @if($content->name=='Donanım')
-                                <a class="post-category cat-1" href="category.html">{{$content->name}}</a>
-                            @elseif($content->name=='Mobil')
-                                <a class="post-category cat-2" href="category.html">{{$content->name}}</a>
-                            @elseif($content->name=='Oyun')
-                                <a class="post-category cat-3" href="category.html">{{$content->name}}</a>
-                            @elseif($content->name=='Yazılım')
-                                <a class="post-category cat-4" href="category.html">{{$content->name}}</a>
-                            @endif
-                            <span class="post-date">{{date("d/m/Y",strtotime($content->published_at))}}</span>
-                        </div>
-                        <h1>{{$content->title}}</h1>
-                    </div>
+@section('category-title')
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                        <ul class="page-header-breadcrumb">
+                            <li><a href="/">Anasayfa</a></li>
+                            <li>{{$contents[0]->name}}</li>
+                        </ul>
+                        <h1>{{$contents[0]->name}}</h1>
                 </div>
             </div>
         </div>
-    @endforeach
+    </div>
 @endsection
 @section('index3')
     <div class="section">
@@ -38,28 +27,32 @@
                 <div class="col-md-8">
                     <div class="section-row sticky-container">
                         @foreach($contents as $content)
-                        <div class="main-post">
-                            <h3>{{$content->title}}</h3>
+                            <div class="main-post">
+                                <h3>{{$content->title}}</h3>
 
-                            {{--                            buraya ilk paragraf--}}
-                            <figure class="figure-img">
-                                <img class="img-responsive" src="{{(asset('/uploads/content/').'/'.$content->photo)}}"
-                                     alt="">
-                            </figure>
-                            <p>{{$content->text}}</p>
-                        </div>
-{{--                        sosyal medyada paylaşma--}}
-                        <div class="post-shares sticky-shares">
-                            <a href="http://www.facebook.com/share.php?u=https://paylaşılacaksiteadresi.html" target="_blank" class="share-facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="https://twitter.com/share" target="_blank" data-url="content-post/{{$content->search_title}}" data-lang="tr"  class="share-twitter"><i class="fa fa-twitter"></i></a>
-{{--                            <a href="#" class="share-google-plus"><i class="fa fa-google-plus"></i></a>--}}
-{{--                            <a href="#" class="share-pinterest"><i class="fa fa-pinterest"></i></a>--}}
-{{--                            <a href="#" class="share-linkedin"><i class="fa fa-linkedin"></i></a>--}}
-{{--                            <a href="#"><i class="fa fa-envelope"></i></a>--}}
-                        </div>
+                                {{--                            buraya ilk paragraf--}}
+                                <figure class="figure-img">
+                                    <img class="img-responsive"
+                                         src="{{(asset('/uploads/content/').'/'.$content->photo)}}"
+                                         alt="">
+                                </figure>
+                                <p>{{$content->text}}</p>
+                            </div>
+                            {{--                        sosyal medyada paylaşma--}}
+                            <div class="post-shares sticky-shares">
+                                <a href="http://www.facebook.com/share.php?u=https://paylaşılacaksiteadresi.html"
+                                   target="_blank" class="share-facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/share" target="_blank"
+                                   data-url="content-post/{{$content->search_title}}" data-lang="tr"
+                                   class="share-twitter"><i class="fa fa-twitter"></i></a>
+                                {{--                            <a href="#" class="share-google-plus"><i class="fa fa-google-plus"></i></a>--}}
+                                {{--                            <a href="#" class="share-pinterest"><i class="fa fa-pinterest"></i></a>--}}
+                                {{--                            <a href="#" class="share-linkedin"><i class="fa fa-linkedin"></i></a>--}}
+                                {{--                            <a href="#"><i class="fa fa-envelope"></i></a>--}}
+                            </div>
                         @endforeach
 
-                            </div>
+                    </div>
 
                     <!-- ad -->
                     <div class="section-row text-center">
@@ -73,11 +66,12 @@
                     <div class="section-row">
                         <div class="post-author">
                             <div class="media">
-                                <div class="media-left">
-                                    <img class="media-object" src="./img/author.png" alt="">
-                                </div>
-                                <div class="media-body">
-                                    @foreach($user as $us)
+                                @foreach($user as $us)
+                                    <div class="media-left">
+                                        <img class="media-object" src="{{asset('uploads/profiles/').'/'.$us->photo}}"
+                                             alt="avatar">
+                                    </div>
+                                    <div class="media-body">
                                         <div class="media-heading">
                                             <h3>{{$us->name}}</h3>
                                         </div>
@@ -86,8 +80,9 @@
                                                                                    class="fa fa-mail-forward"></i></a>
                                             </li>
                                         </ul>
-                                    @endforeach
-                                </div>
+
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -96,83 +91,69 @@
                     <!-- comments -->
                     <div class="section-row">
                         <div class="section-title">
-                            <h2>3 Comments</h2>
+                            <h2>Yorumlar ({{$count}})</h2>
                         </div>
 
                         <div class="post-comments">
                             <!-- comment -->
+                            @foreach($comments as $com)
                             <div class="media">
+
                                 <div class="media-left">
-                                    <img class="media-object" src="./img/avatar.png" alt="">
+                                    <img class="media-object" src="{{asset('home/./img/avatar.png')}}" alt="avatar">
                                 </div>
                                 <div class="media-body">
                                     <div class="media-heading">
-                                        <h4>John Doe</h4>
-                                        <span class="time">March 27, 2018 at 8:00 am</span>
+                                        <h4>{{$com->name}}</h4>
+                                        <span class="time">{{$com->published_at}}</span>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.</p>
-
-
+                                    <p>{{$com->comment}}</p>
                                     <!-- /comment -->
                                 </div>
+
                             </div>
+                        @endforeach
                             <!-- /comment -->
 
-                            <!-- comment -->
-                            <div class="media">
-                                <div class="media-left">
-                                    <img class="media-object" src="./img/avatar.png" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <div class="media-heading">
-                                        <h4>John Doe</h4>
-                                        <span class="time">March 27, 2018 at 8:00 am</span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.</p>
-                                </div>
-                            </div>
-                            <!-- /comment -->
                         </div>
                     </div>
                     <!-- /comments -->
-
                     <!-- reply -->
                     <div class="section-row">
                         <div class="section-title">
                             <h2>Leave a reply</h2>
                             <p>your email address will not be published. required fields are marked *</p>
                         </div>
-                        <form class="post-reply">
+                        @if (session('comment-success'))
+                            <div class="alert alert-success" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                &nbsp;{{ session('comment-success') }}
+                            </div>
+                        @endif
+                        <form class="post-reply" method="post" action="{{route('comment-create',$contents[0]->id)}}">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <span>Name *</span>
-                                        <input class="input" type="text" name="name">
+                                        <input class="input" type="text" name="name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <span>Email *</span>
-                                        <input class="input" type="email" name="email">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <span>Website</span>
-                                        <input class="input" type="text" name="website">
+                                        <input class="input" type="email" name="email" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea class="input" name="message" placeholder="Message"></textarea>
+
+                                        <textarea class="input" name="comment"
+                                                  placeholder="Yorumunuzu Yazınız.."></textarea>
                                     </div>
-                                    <button class="primary-button">Submit</button>
+                                    <button class="primary-button" type="submit">Gönder</button>
                                 </div>
                             </div>
                         </form>
@@ -180,9 +161,7 @@
                     <!-- /reply -->
                 </div>
                 <!-- /Post content -->
-
                 <!-- aside -->
-
                 <!-- /aside -->
             </div>
             <!-- /row -->

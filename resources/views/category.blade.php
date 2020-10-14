@@ -1,19 +1,17 @@
 @extends('layouts.home-master')
 @section('page-title')
-{{$categoryPost[0]->name}}
+{{$categoryPost[0]->name}} Haberleri
 @endsection
 @section('category-title')
     <div class="page-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-10">
-                    @foreach($categoryPost->slice(0,1) as $post)
                         <ul class="page-header-breadcrumb">
                             <li><a href="/">Anasayfa</a></li>
-                            <li>{{$post->name}}</li>
+                            <li>{{$categoryPost[0]->name}}</li>
                         </ul>
-                        <h1>{{$post->name}}</h1>
-                    @endforeach
+                        <h1>{{$categoryPost[0]->name}}</h1>
                 </div>
             </div>
         </div>

@@ -70,8 +70,8 @@ class HomeController extends Controller
 
     public function contentPost($search_title)
     {
-        $user = DB::table('users')
-            ->join('contents', 'contents.writer', '=', 'users.id')
+        $user = DB::table('contents')
+            ->join('users', 'users.id', '=', 'contents.writer')
             ->where('contents.search_title', '=', $search_title)
             ->select()->get();
         $contents = DB::table('category')
@@ -79,11 +79,18 @@ class HomeController extends Controller
             ->where('contents.search_title', '=', $search_title)
             ->orderBy('viewing', 'desc')
             ->select()->get();
+        $comments = DB::table('contents')
+            ->join('comments', 'content_id', '=', 'contents.id')
+            ->where([['comments.content_id', '=', $contents[0]->id],['comments.is_approve','=',true]])
+            ->select()->get();
+        $count=DB::table('contents')
+            ->join('comments', 'content_id', '=', 'contents.id')
+            ->where([['comments.content_id', '=', $contents[0]->id],['comments.is_approve','=',true]])
+            ->count();
         $mostRead = $this->mostRead();
         $featuredPosts = $this->featuredPosts();
         $piece = $this->piece();
-
-        return view('content-post', compact(['contents', 'mostRead', 'featuredPosts', 'piece', 'user']));
+        return view('content-post', compact(['contents', 'mostRead', 'featuredPosts', 'piece', 'user', 'comments','count']));
     }
 
     public function categoryView($category)
@@ -142,9 +149,20 @@ class HomeController extends Controller
             'subject' => $request['subject'],
             'message' => $request['message']
         ]);
-        session()->flash('contact-success', 'Mesajınız Tarafımıza Ulaştırıldı.');
+        session()->flash('contact-success', 'Mesajınız Tarafımıza Ulaşmıştır.');
         return view('contact', compact(['mostRead', 'featuredPosts', 'piece']));
     }
 
-
+    public function commentCreate(Request $request, $id)
+    {
+        DB::table('comments')->insert([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'comment' => $request['comment'],
+            'content_id' => $id,
+            'is_approve'=>false
+        ]);
+        session()->flash('comment-success', 'Yorumunuz başarılı bir şekilde gönderildi. Editör onayından geçtikten sonra yayınlanacaktır.');
+        return back();
+    }
 }
