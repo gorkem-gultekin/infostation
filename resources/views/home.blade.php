@@ -40,7 +40,8 @@
                                     <td>{{$post->created_at}}</td>
                                     <td>
                                         <ul class="d-flex justify-content-center">
-                                            <li class="mr-3"><a href="/edit/{{$post->id}}" class="text-secondary"><i class="fa fa-edit"></i></a></li>
+                                            <li class="mr-3"><a href="/edit/{{$post->id}}" class="text-secondary"><i
+                                                        class="fa fa-edit"></i></a></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -48,11 +49,28 @@
                             </tbody>
                         </table>
                         <br>
-                        <center>
-                        <button onclick="location.href='{{route('content-export')}}'" type="button"
-                                class="btn btn-outline-secondary mb-3">Download
-                        </button>
-                        </center>
+
+                        <form action="{{route('content-import')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="input-group mb-3 col-md-4">
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <input type="file" name="file" class="custom-file-input"
+                                               id="inputGroupFile02">
+                                        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                    </div>
+                                    <p align="right">
+                                        &nbsp;&nbsp;<button type="submit" class="btn btn-outline-info mb-3">Upload
+                                        </button>&nbsp;&nbsp;
+                                        <button onclick="location.href='{{route('content-export')}}'" type="button"
+                                                class="btn btn-outline-secondary mb-3">Download
+                                        </button>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>

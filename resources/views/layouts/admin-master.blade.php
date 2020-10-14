@@ -64,16 +64,6 @@
                         <li class="@yield('users-active')"><a href="{{route('users')}}"><i class="ti-user"></i> <span>users</span></a></li>
                         <li>
                             <a href="javascript:void(0)" aria-expanded="true"><i
-                                    class="ti-layout-sidebar-left"></i><span>Sidebar
-                                        Types
-                                    </span></a>
-                            <ul class="collapse">
-                                <li><a href="index.html">Left Sidebar</a></li>
-                                <li><a href="index3-horizontalmenu.html">Horizontal Sidebar</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i
                                     class="ti-pie-chart"></i><span>Charts</span></a>
                             <ul class="collapse">
                                 <li><a href="barchart.html">bar chart</a></li>
@@ -292,8 +282,8 @@
                         <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <i
                                 class="fa fa-angle-down"></i></h4>
                         <div class="dropdown-menu">
-                            <!-- <a class="dropdown-item" href="#">Message</a>
-                             <a class="dropdown-item" href="#">Settings</a>-->
+                            <a class="dropdown-item" href="#">Message</a>
+                             <a class="dropdown-item" href="update/{{Auth::user()->id}}">Settings</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

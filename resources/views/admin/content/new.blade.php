@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <p align="left"><label for="exampleFormControlTextarea1">Text</label></p>
-                                <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="3"
+                                <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="10"
                                           required></textarea>
                                 <div class="invalid-feedback">Please enter content.</div>
                             </div>

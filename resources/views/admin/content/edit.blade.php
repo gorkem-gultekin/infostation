@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="form-group">
                                     <p align="left"><label for="exampleFormControlTextarea1">Text</label></p>
-                                    <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="3"
+                                    <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="10"
                                               required>{{$content->text}}</textarea>
                                     <div class="invalid-feedback">Please enter content.</div>
                                 </div>
@@ -60,8 +60,16 @@
                                         </a>
                                     </p>
                                 </div>
-
                             </form>
+                                <p align="right">
+                                <button type="button" class="btn btn-outline-success mb-3"
+                                        onclick="location.href='/content-published/{{$content->id}}'">PUBLISH
+                                </button>
+                                <button type="button" class="btn btn-outline-danger mb-3"
+                                        onclick="location.href='/content-delete/{{$content->id}}'">DELETE
+                                </button>
+                                </p>
+
                         </div>
                     </div>
                 </div>

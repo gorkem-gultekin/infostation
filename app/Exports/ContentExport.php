@@ -17,7 +17,7 @@ class ContentExport implements FromCollection
     {
         $user=DB::table('users')
             ->join('contents','contents.writer','=','users.id')
-            ->select('contents.id','contents.title','contents.text','contents.photo','users.name','is_approve','category','search_title')
+            ->select('contents.id','contents.title','contents.text','contents.photo','contents.writer','category','search_title','users.name')
             ->get();
         return $user;
     }

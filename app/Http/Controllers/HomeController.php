@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -80,6 +81,7 @@ class HomeController extends Controller
         $mostRead = $this->mostRead();
         $featuredPosts = $this->featuredPosts();
         $piece = $this->piece();
+
         return view('content-post', compact(['contents', 'mostRead', 'featuredPosts', 'piece', 'user']));
     }
 
