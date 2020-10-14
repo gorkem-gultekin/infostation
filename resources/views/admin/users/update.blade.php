@@ -1,4 +1,7 @@
 @extends('layouts.admin-master')
+@section('page-title')
+    User Settings
+@endsection
 @section('content')
 <center>
     <div class="col-6 mt-5" >

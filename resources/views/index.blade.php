@@ -1,4 +1,7 @@
 @extends('layouts.home-master')
+@section('page-title')
+infoStation
+@endsection
 @section('index1')
     <div class="row">
         @foreach($contents->slice(0,2) as $content)

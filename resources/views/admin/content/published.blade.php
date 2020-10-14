@@ -1,4 +1,7 @@
 @extends('layouts.admin-master')
+@section('page-title')
+    Published
+@endsection
 @section('content-active')
     active
 @endsection

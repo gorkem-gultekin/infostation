@@ -1,4 +1,7 @@
 @extends('layouts.admin-master')
+@section('page-title')
+    Admin Panel
+@endsection
 @section('home-active')
     active
 @endsection

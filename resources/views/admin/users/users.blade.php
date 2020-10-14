@@ -1,4 +1,7 @@
 @extends('layouts.admin-master')
+@section('page-title')
+   Users
+@endsection
 @section('users-active')
     active
 @endsection

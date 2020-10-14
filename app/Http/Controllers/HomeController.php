@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Contents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -122,5 +123,28 @@ class HomeController extends Controller
         return back();
 
     }
+
+    public function contactView()
+    {
+        $mostRead = $this->mostRead();
+        $featuredPosts = $this->featuredPosts();
+        $piece = $this->piece();
+        return view('contact', compact(['mostRead', 'featuredPosts', 'piece']));
+    }
+
+    public function contactMessage(Request $request)
+    {
+        $mostRead = $this->mostRead();
+        $featuredPosts = $this->featuredPosts();
+        $piece = $this->piece();
+        DB::table('contact')->insert([
+            'email' => $request['email'],
+            'subject' => $request['subject'],
+            'message' => $request['message']
+        ]);
+        session()->flash('contact-success', 'Mesajınız Tarafımıza Ulaştırıldı.');
+        return view('contact', compact(['mostRead', 'featuredPosts', 'piece']));
+    }
+
 
 }

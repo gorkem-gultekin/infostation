@@ -6,28 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>InfoStation</title>
-
+    <title>@yield('page-title')</title>
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet">
-
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="{{asset('home/css/bootstrap.min.css')}}"/>
-
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="{{asset('home/css/font-awesome.min.css')}}">
-
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="{{asset('home/css/style.css')}}"/>
-
     <!-- Favicon -->
-    <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon" />
+    <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon"/>
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 <body>
 <!-- Header -->
@@ -51,9 +45,9 @@
                     <li class="cat-2"><a href="/category/mobil">Mobil</a></li>
                     <li class="cat-3"><a href="/category/oyun">Oyun</a></li>
                     <li class="cat-4"><a href="/category/yazilim">Yazılım</a></li>
+                    <li><a href="/iletisim">İletişim</a></li>
                 </ul>
                 <!-- /nav -->
-
                 <!-- search & aside toggle -->
                 <div class="nav-btns">
                     <button class="aside-btn"><i class="fa fa-bars"></i></button>
@@ -73,44 +67,28 @@
             <!-- nav -->
             <div class="section-row">
                 <ul class="nav-aside-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Join Us</a></li>
-                    <li><a href="#">Advertisement</a></li>
-                    <li><a href="contact.html">Contacts</a></li>
+                    <li><a href="/">Anasayfa</a></li>
+                    <li><a href="#">Popüler</a></li>
+                    <li><a href="/iletisim">İletişim</a></li>
                 </ul>
             </div>
             <!-- /nav -->
 
             <!-- widget posts -->
             <div class="section-row">
-                <h3>Recent Posts</h3>
+                <h3>Öne Çıkan Haberler</h3>
+                @foreach($featuredPosts->slice(0,3) as $featured)
                 <div class="post post-widget">
-                    <a class="post-img" href="blog-post.html"><img src="{{asset('home/./img/widget-2.jpg')}}"
-                                                                   alt=""></a>
-                    <div class="post-body">
-                        <h3 class="post-title"><a href="blog-post.html">Pagedraw UI Builder Turns Your Website Design
-                                Mockup Into Code Automatically</a></h3>
-                    </div>
-                </div>
 
-                <div class="post post-widget">
-                    <a class="post-img" href="blog-post.html"><img src="{{asset('home/./img/widget-3.jpg')}}"
-                                                                   alt=""></a>
-                    <div class="post-body">
-                        <h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The Backend
-                                Development Block!</a></h3>
-                    </div>
-                </div>
+                        <a class="post-img" href="/content-post/{{$featured->search_title}}"><img
+                                src="{{(asset('/uploads/content/').'/'.$featured->photo)}}"
+                                alt=""></a>
+                        <div class="post-body">
+                            <h3 class="post-title"><a href="/content-post/{{$featured->search_title}}">{{$featured->title}}</a></h3>
+                        </div>
 
-                <div class="post post-widget">
-                    <a class="post-img" href="blog-post.html"><img src="{{asset('home/./img/widget-4.jpg')}}"
-                                                                   alt=""></a>
-                    <div class="post-body">
-                        <h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And Development
-                                Tools</a></h3>
-                    </div>
                 </div>
+                @endforeach
             </div>
             <!-- /widget posts -->
 
@@ -177,7 +155,8 @@
                                     src="{{(asset('/uploads/content/').'/'.$most->photo)}}" alt="" height="80"
                                     width="50"></a>
                             <div class="post-body">
-                                <h3 class="post-title"><a href="/content-post/{{$most->search_title}}">{{$most->title}}</a></h3>
+                                <h3 class="post-title"><a
+                                        href="/content-post/{{$most->search_title}}">{{$most->title}}</a></h3>
                             </div>
                             Görüntülenme: <span class="visible">{{$most->viewing}}</span>
                         </div>
@@ -209,7 +188,8 @@
                                     @endif
                                     <span class="post-date">{{date("d/m/Y",strtotime($featured->published_at))}}</span>
                                 </div>
-                                <h3 class="post-title"><a href="/content-post/{{$featured->search_title}}">{{$featured->title}}</a>
+                                <h3 class="post-title"><a
+                                        href="/content-post/{{$featured->search_title}}">{{$featured->title}}</a>
                                 </h3>
                             </div>
 
@@ -272,7 +252,7 @@
             <div class="col-md-5">
                 <div class="footer-widget">
                     <div class="footer-logo">
-                        <a href="/" class="logo"><img src="{{asset('home/./img/logo.png')}}" alt=""></a>
+                        <a href="/" class="logo"><img src="{{asset('home/./img/logo.png')}}" alt="logo"></a>
                     </div>
                     <div class="footer-copyright">
 								<span>&copy;
@@ -293,7 +273,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             <ul class="footer-links">
                                 <li><a href="about.html">About Us</a></li>
                                 <li><a href="#">Join Us</a></li>
-                                <li><a href="contact.html">İletişim</a></li>
+                                <li><a href="/iletisim">İletişim</a></li>
                             </ul>
                         </div>
                     </div>

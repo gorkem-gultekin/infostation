@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>admin</title>
+    <title>@yield('page-title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/icon/favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -278,11 +278,11 @@
                 </div>
                 <div class="col-sm-6 clearfix">
                     <div class="user-profile pull-right">
-                        <img class="avatar user-thumb" src="{{asset('uploads/profiles/').'/'.Auth::user()->photo }}" alt="avatar">
+                        <img class="avatar user-thumb" src="{{asset('uploads/profiles/').'/'.Auth::user()->photo }}">
                         <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <i
                                 class="fa fa-angle-down"></i></h4>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Message</a>
+{{--                            <a class="dropdown-item" href="#">Message</a>--}}
                              <a class="dropdown-item" href="update/{{Auth::user()->id}}">Settings</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

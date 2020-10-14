@@ -1,4 +1,7 @@
 @extends('layouts.home-master')
+@section('page-title')
+{{$contents[0]->title}}
+@endsection
 @section('content-header')
     @foreach($contents as $content)
         <div id="post-header" class="page-header">
@@ -45,16 +48,18 @@
                             </figure>
                             <p>{{$content->text}}</p>
                         </div>
-                        @endforeach
+{{--                        sosyal medyada paylaşma--}}
                         <div class="post-shares sticky-shares">
-                            <a href="#" class="share-facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="share-twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="share-google-plus"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="share-pinterest"><i class="fa fa-pinterest"></i></a>
-                            <a href="#" class="share-linkedin"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-envelope"></i></a>
+                            <a href="http://www.facebook.com/share.php?u=https://paylaşılacaksiteadresi.html" target="_blank" class="share-facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/share" target="_blank" data-url="content-post/{{$content->search_title}}" data-lang="tr"  class="share-twitter"><i class="fa fa-twitter"></i></a>
+{{--                            <a href="#" class="share-google-plus"><i class="fa fa-google-plus"></i></a>--}}
+{{--                            <a href="#" class="share-pinterest"><i class="fa fa-pinterest"></i></a>--}}
+{{--                            <a href="#" class="share-linkedin"><i class="fa fa-linkedin"></i></a>--}}
+{{--                            <a href="#"><i class="fa fa-envelope"></i></a>--}}
                         </div>
-                    </div>
+                        @endforeach
+
+                            </div>
 
                     <!-- ad -->
                     <div class="section-row text-center">

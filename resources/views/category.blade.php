@@ -1,4 +1,7 @@
 @extends('layouts.home-master')
+@section('page-title')
+{{$categoryPost[0]->name}}
+@endsection
 @section('category-title')
     <div class="page-header">
         <div class="container">
