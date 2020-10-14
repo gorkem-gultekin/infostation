@@ -20,8 +20,9 @@
     @foreach($categoryPost->slice(0,2) as $post)
         <div class="col-md-6">
             <div class="post">
-                <a class="post-img" href="/{{$post->search_title}}"><img src="{{asset('/uploads/content/').'/'.$post->photo}}"
-                                                               height="250" alt=""></a>
+                <a class="post-img" href="/content-post/{{$post->search_title}}"><img
+                        src="{{asset('/uploads/content/').'/'.$post->photo}}"
+                        height="250" alt=""></a>
                 <div class="post-body">
                     <div class="post-meta">
                         @if($post->name=='Donanım')
@@ -35,7 +36,7 @@
                         @endif
                         <span class="post-date">{{date("d/m/Y",strtotime($post->published_at))}}</span>
                     </div>
-                    <h3 class="post-title"><a href="/{{$post->search_title}}">{{$post->title}}</a></h3>
+                    <h3 class="post-title"><a href="/content-post/{{$post->search_title}}">{{$post->title}}</a></h3>
                 </div>
             </div>
         </div>
@@ -53,8 +54,10 @@
     @foreach($categoryPost->slice(2) as $post)
         <div class="col-md-12">
             <div class="post post-row">
-                <a class="post-img" href="/{{$post->search_title}}"><img src="{{asset('/uploads/content/').'/'.$post->photo}}"
-                                                               height="250" alt=""></a>
+
+                <a class="post-img" href="/content-post/{{$post->search_title}}"><img
+                        src="{{asset('/uploads/content/').'/'.$post->photo}}"
+                        height="250" alt=""></a>
                 <div class="post-body">
                     <div class="post-meta">
                         @if($post->name=='Donanım')
@@ -64,13 +67,14 @@
                         @elseif($post->name=='Oyun')
                             <a class="post-category cat-3">{{$post->name}}</a>
                         @elseif($post->name=='Yazılım')
-                            <a class="post-category cat-4" >{{$post->name}}</a>
+                            <a class="post-category cat-4">{{$post->name}}</a>
                         @endif
                         <span class="post-date">{{date("d/m/Y",strtotime($post->published_at))}}</span>
                     </div>
-                    <h3 class="post-title"><a href="/{{$post->search_title}}">{{$post->title}}</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam...</p>
+                    <h3 class="post-title"><a href="/content-post/{{$post->search_title}}">{{$post->title}}</a></h3>
+                    <div class="text-abbreviation">
+                        {{$post->text}}
+                    </div>
                 </div>
             </div>
         </div>

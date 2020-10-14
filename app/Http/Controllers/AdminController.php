@@ -8,13 +8,16 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use function Complex\negative;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $posts = DB::table('category')
+            ->join('contents', 'contents.category', '=', 'category.id')
+            ->orderBy('created_at', 'desc')
+            ->select()->get();
+        return view('home',compact('posts'));
     }
 
     public function indexView()

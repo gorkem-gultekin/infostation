@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //    return view('index');
 //});
 Route::get('/','HomeController@index');
-Route::get('/{search_title}','HomeController@contentPost');
+Route::get('/content-post/{search_title}','HomeController@contentPost');
 Route::get('/category/{category}','HomeController@categoryView');
 Route::post('/bulletin','HomeController@bulletin');
 
@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/content-published/{id}','ContentController@contentPublished')->where(array('id'=>'[0-9]+'))->name('content-published');//content published updated is_aprrove
     Route::get('/content-delete/{id}', 'ContentController@contentDelete')->where(array('id'=>'[0-9]+'))->name('content-delete');//content delete updated deleted_at
     Route::get('/content-hard-delete/{id}','ContentController@contenthardDelete')->where(array('id'=>'[0-9]+'))->name('content-hard-delete');//content hard delete
+    Route::get('/content-export', 'ExcelDownloadController@contentExport')->name('content-export');//excel user download
 
 });
 

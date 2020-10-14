@@ -34,6 +34,7 @@
                 <!-- Post content -->
                 <div class="col-md-8">
                     <div class="section-row sticky-container">
+                        @foreach($contents as $content)
                         <div class="main-post">
                             <h3>{{$content->title}}</h3>
 
@@ -44,6 +45,7 @@
                             </figure>
                             <p>{{$content->text}}</p>
                         </div>
+                        @endforeach
                         <div class="post-shares sticky-shares">
                             <a href="#" class="share-facebook"><i class="fa fa-facebook"></i></a>
                             <a href="#" class="share-twitter"><i class="fa fa-twitter"></i></a>

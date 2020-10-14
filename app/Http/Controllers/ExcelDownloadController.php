@@ -15,6 +15,6 @@ class ExcelDownloadController extends Controller
     }
     public function contentExport()
     {
-        return Excel::download(new ContentExport, 'infostation-content.xlsx');
+        return Excel::download(new ContentExport, 'infostation-contents.xlsx');
     }
 }

@@ -20,8 +20,9 @@
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="{{asset('home/css/style.css')}}"/>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- Favicon -->
+    <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon" />
+
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -29,7 +30,6 @@
 
 </head>
 <body>
-
 <!-- Header -->
 <header id="header">
     <!-- Nav -->
@@ -173,11 +173,11 @@
                     </div>
                     @foreach($mostRead->slice(0,4) as $most)
                         <div class="post post-widget">
-                            <a class="post-img" href="{{$most->search_title}}"><img
+                            <a class="post-img" href="/content-post/{{$most->search_title}}"><img
                                     src="{{(asset('/uploads/content/').'/'.$most->photo)}}" alt="" height="80"
                                     width="50"></a>
                             <div class="post-body">
-                                <h3 class="post-title"><a href="/{{$most->search_title}}">{{$most->title}}</a></h3>
+                                <h3 class="post-title"><a href="/content-post/{{$most->search_title}}">{{$most->title}}</a></h3>
                             </div>
                             Görüntülenme: <span class="visible">{{$most->viewing}}</span>
                         </div>
@@ -193,7 +193,7 @@
                     @foreach($featuredPosts->slice(0,2) as $featured)
                         <div class="post post-thumb">
 
-                            <a class="post-img" href="/{{$featured->search_title}}"><img
+                            <a class="post-img" href="/content-post/{{$featured->search_title}}"><img
                                     src="{{(asset('/uploads/content/').'/'.$featured->photo)}}"
                                     alt=""></a>
                             <div class="post-body">
@@ -209,7 +209,7 @@
                                     @endif
                                     <span class="post-date">{{date("d/m/Y",strtotime($featured->published_at))}}</span>
                                 </div>
-                                <h3 class="post-title"><a href="/{{$featured->search_title}}">{{$featured->title}}</a>
+                                <h3 class="post-title"><a href="/content-post/{{$featured->search_title}}">{{$featured->title}}</a>
                                 </h3>
                             </div>
 

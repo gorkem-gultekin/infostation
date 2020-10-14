@@ -951,6 +951,15 @@ RESPONSIVE
      color: #FFF;
      opacity: 0.9;
 }
+ .text-abbreviation{
+     /*autoprefixer: off ;*/
+     -webkit-box-orient: vertical;     /* autoprefixer: on */
+     display: block;
+     display: -webkit-box;
+     -webkit-line-clamp: 7;
+     overflow: hidden;
+     text-overflow: ellipsis;
+ }
 /*=========================================================
 	RESPONSIVE
 ===========================================================*/

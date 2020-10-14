@@ -4,7 +4,7 @@
         @foreach($contents->slice(0,2) as $content)
             <div class="col-md-6">
                 <div class="post post-thumb">
-                    <a class="post-img" href="/{{$content->search_title}}"><img
+                    <a class="post-img" href="/content-post/{{$content->search_title}}"><img
                             src="{{asset('/uploads/content/').'/'.$content->photo}}" height="350" alt=""></a>
                     <div class="post-body">
                         <div class="post-meta">
@@ -19,7 +19,7 @@
                             @endif
                             <span class="post-date">{{date("d/m/Y",strtotime($content->published_at))}}</span>
                         </div>
-                        <h3 class="post-title"><a href="/{{$content->search_title}}">{{$content->title}}</a></h3>
+                        <h3 class="post-title"><a href="/content-post/{{$content->search_title}}">{{$content->title}}</a></h3>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
         @foreach($contents->slice(2,3) as $content)
             <div class="col-md-4">
                 <div class="post">
-                    <a class="post-img" href="/{{$content->search_title}}"><img
+                    <a class="post-img" href="/content-post/{{$content->search_title}}"><img
                             src="{{asset('/uploads/content/').'/'.$content->photo}}" height="200" alt=""></a>
                     <div class="post-body">
                         <div class="post-meta">
@@ -52,7 +52,7 @@
                             @endif
                             <span class="post-date">{{date("d/m/Y",strtotime($content->published_at))}}</span>
                         </div>
-                        <h3 class="post-title"><a href="/{{$content->search_title}}">{{$content->title}}</a></h3>
+                        <h3 class="post-title"><a href="/content-post/{{$content->search_title}}">{{$content->title}}</a></h3>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
     @foreach($contents->slice(5) as $content)
         <div class="col-md-6">
             <div class="post">
-                <a class="post-img" href="/{{$content->search_title}}"><img
+                <a class="post-img" href="/content-post/{{$content->search_title}}"><img
                         src="{{asset('/uploads/content/').'/'.$content->photo}}" height="200" alt=""></a>
                 <div class="post-body">
                     <div class="post-meta">
@@ -81,7 +81,7 @@
                         @endif
                         <span class="post-date">{{date("d/m/Y",strtotime($content->published_at))}}</span>
                     </div>
-                    <h3 class="post-title"><a href="/{{$content->search_title}}">{{$content->title}}</a></h3>
+                    <h3 class="post-title"><a href="/content-post/{{$content->search_title}}">{{$content->title}}</a></h3>
                 </div>
             </div>
         </div>

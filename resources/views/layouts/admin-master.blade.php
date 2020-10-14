@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/default-css.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+    <!-- Favicon -->
+    <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon" />
     <!-- modernizr css -->
     <script src="{{asset('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
 </head>
@@ -36,8 +38,8 @@
     <div class="sidebar-menu">
         <div class="sidebar-header">
             <div class="logo">
-{{--                <a href="#"><img src="{{asset('assets/images/icon/logo.png')}}" alt="logo"></a>--}}
-                <h1 style="color: white">InfoStation</h1>
+                <a href="/admin"><img src="{{asset('assets/images/icon/logo.png')}}" alt="logo"></a>
+{{--                <h1 style="color: white">infoStation</h1>--}}
             </div>
         </div>
         <div class="main-menu">
