@@ -51,10 +51,15 @@
                 <div class="nav-btns">
                     <button class="aside-btn"><i class="fa fa-bars"></i></button>
                     <button class="search-btn"><i class="fa fa-search"></i></button>
-                    <div class="search-form">
-                        <input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">
-                        <button class="search-close"><i class="fa fa-times"></i></button>
+
+                    <form action="{{URL::to('/search')}}" method="POST" role="search">
+                        @csrf
+                        <div class="search-form">
+                            <input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">
+                            <button class="search-close"><i class="fa fa-times"></i></button>
                     </div>
+                    </form>
+
                 </div>
                 <!-- /search & aside toggle -->
             </div>
@@ -78,7 +83,6 @@
                 <h3>Öne Çıkan Haberler</h3>
                 @foreach($featuredPosts->slice(0,3) as $featured)
                     <div class="post post-widget">
-
                         <a class="post-img" href="/content-post/{{$featured->search_title}}"><img
                                 src="{{(asset('/uploads/content/').'/'.$featured->photo)}}"
                                 alt=""></a>
@@ -86,7 +90,6 @@
                             <h3 class="post-title"><a
                                     href="/content-post/{{$featured->search_title}}">{{$featured->title}}</a></h3>
                         </div>
-
                     </div>
                 @endforeach
             </div>
@@ -133,8 +136,6 @@
                     @yield('category-post')
                 </div>
             </div>
-
-
             <div class="col-md-4">
                 <!-- ad -->
                 <div class="aside-widget text-center">
@@ -163,7 +164,6 @@
                     @endforeach
                 </div>
                 <!-- /post widget -->
-
                 <!-- post widget -->
                 <div class="aside-widget">
                     <div class="section-title">
@@ -192,12 +192,10 @@
                                         href="/content-post/{{$featured->search_title}}">{{$featured->title}}</a>
                                 </h3>
                             </div>
-
                         </div>
                     @endforeach
                 </div>
                 <!-- /post widget -->
-
                 <!-- ad -->
                 <div class="aside-widget text-center">
                     <a href="#" style="display: inline-block;margin: auto;">
@@ -242,7 +240,6 @@
     <!-- /container -->
 </div>
 <!-- /section -->
-
 <!-- Footer -->
 <footer id="footer">
     <!-- container -->

@@ -16,6 +16,7 @@
     </ul>
 @endsection
 @section('content')
+
     <div class="main-content-inner">
         @if (session('content-success'))
             <div class="alert alert-success" role="alert">

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Contact;
 use App\Contents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
@@ -81,16 +81,16 @@ class HomeController extends Controller
             ->select()->get();
         $comments = DB::table('contents')
             ->join('comments', 'content_id', '=', 'contents.id')
-            ->where([['comments.content_id', '=', $contents[0]->id],['comments.is_approve','=',true]])
+            ->where([['comments.content_id', '=', $contents[0]->id], ['comments.is_approve', '=', true]])
             ->select()->get();
-        $count=DB::table('contents')
+        $count = DB::table('contents')
             ->join('comments', 'content_id', '=', 'contents.id')
-            ->where([['comments.content_id', '=', $contents[0]->id],['comments.is_approve','=',true]])
+            ->where([['comments.content_id', '=', $contents[0]->id], ['comments.is_approve', '=', true]])
             ->count();
         $mostRead = $this->mostRead();
         $featuredPosts = $this->featuredPosts();
         $piece = $this->piece();
-        return view('content-post', compact(['contents', 'mostRead', 'featuredPosts', 'piece', 'user', 'comments','count']));
+        return view('content-post', compact(['contents', 'mostRead', 'featuredPosts', 'piece', 'user', 'comments', 'count']));
     }
 
     public function categoryView($category)
@@ -160,9 +160,29 @@ class HomeController extends Controller
             'email' => $request['email'],
             'comment' => $request['comment'],
             'content_id' => $id,
-            'is_approve'=>false
+            'is_approve' => false
         ]);
         session()->flash('comment-success', 'Yorumunuz başarılı bir şekilde gönderildi. Editör onayından geçtikten sonra yayınlanacaktır.');
         return back();
+    }
+
+    public function search(Request $request)
+    {
+
+        $mostRead = $this->mostRead();
+        $featuredPosts = $this->featuredPosts();
+        $piece = $this->piece();
+        $q = $request['search'];
+        if ($q != "") {
+            $contents = Contents::where('title', 'LIKE', '%' . $q . '%')
+                ->orWhere('text', 'LIKE', '%' . $q . '%')
+                ->get();
+
+            if (count($contents) > 0) {
+                return view('search', compact('mostRead', 'featuredPosts', 'piece'))->withDetails($contents)->withQuery($q);
+            }
+        }
+        return view('search', compact('mostRead', 'featuredPosts', 'piece'))->withMessage("Aradığınız Bulunamadı");
+
     }
 }
