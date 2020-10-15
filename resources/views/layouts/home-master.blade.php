@@ -39,19 +39,18 @@
                 <!-- nav -->
                 <ul class="nav-menu nav navbar-nav">
                     <li><a href="/">Anasayfa</a></li>
-                    <li><a href="/category/populer">Popüler</a></li>
+                    <li><a href="/populer">Popüler</a></li>
                     <li class="cat-1"><a href="/category/donanim">Donanım</a></li>
                     <li class="cat-2"><a href="/category/mobil">Mobil</a></li>
                     <li class="cat-3"><a href="/category/oyun">Oyun</a></li>
                     <li class="cat-4"><a href="/category/yazilim">Yazılım</a></li>
-                    <li><a href="/iletisim">İletişim</a></li>
+                    <li><a href="/contact">İletişim</a></li>
                 </ul>
                 <!-- /nav -->
                 <!-- search & aside toggle -->
                 <div class="nav-btns">
                     <button class="aside-btn"><i class="fa fa-bars"></i></button>
                     <button class="search-btn"><i class="fa fa-search"></i></button>
-
                     <form action="{{URL::to('/search')}}" method="POST" role="search">
                         @csrf
                         <div class="search-form">
@@ -59,7 +58,6 @@
                             <button class="search-close"><i class="fa fa-times"></i></button>
                     </div>
                     </form>
-
                 </div>
                 <!-- /search & aside toggle -->
             </div>
@@ -73,7 +71,7 @@
                 <ul class="nav-aside-menu">
                     <li><a href="/">Anasayfa</a></li>
                     <li><a href="#">Popüler</a></li>
-                    <li><a href="/iletisim">İletişim</a></li>
+                    <li><a href="/contact">İletişim</a></li>
                 </ul>
             </div>
             <!-- /nav -->
@@ -269,7 +267,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             <h3 class="footer-title">Hakkımızda</h3>
                             <ul class="footer-links">
 
-                                <li><a href="/iletisim">İletişim</a></li>
+                                <li><a href="/contact">İletişim</a></li>
                             </ul>
                         </div>
                     </div>

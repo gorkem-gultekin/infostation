@@ -66,6 +66,8 @@
                         </li>
                         <li class="@yield('comment-active')"><a href="{{route('comments-view')}}"><i
                                     class="ti-comment"></i> <span>comments</span></a></li>
+                        <li class="@yield('contact-active')"><a href="{{route('admin-contact')}}"><i class="ti-user"></i> <span>contact message</span></a>
+                        </li>
                         <li class="@yield('users-active')"><a href="{{route('users')}}"><i class="ti-user"></i> <span>users</span></a>
                         </li>
                         <li>

@@ -21,12 +21,10 @@ Route::get('/', 'HomeController@index');
 Route::get('/content-post/{search_title}', 'HomeController@contentPost');
 Route::get('/category/{category}', 'HomeController@categoryView');
 Route::post('/bulletin', 'HomeController@bulletin');
-Route::get('/iletisim', 'HomeController@contactView');
+Route::get('/contact', 'HomeController@contactView');
 Route::post('/message', 'HomeController@contactMessage');
-Route::post('comment-create/{id}', 'HomeController@commentCreate')->where(array('id' => '[0-9]+'))->name('comment-create');//comment save
+Route::post('/comment-create/{id}', 'HomeController@commentCreate')->where(array('id' => '[0-9]+'))->name('comment-create');//comment save
 Route::get('/populer','HomeController@populerView');
-
-
 Route::post('/search/', 'HomeController@search')->name('search');
 
 
@@ -47,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/update/{id}', 'AdminController@update')->where(array('id' => '[0-9]+'));//id control
     Route::get('/delete/{id}', 'AdminController@delete')->where(array('id' => '[0-9]+'));//id control
     Route::post('/create', 'AdminController@userCreate');
-
+    Route::get('/admin-contact','AdminController@adminContact')->name('admin-contact');
 
     //------------Content Controller------------
     Route::get('/pending', 'ContentController@pendingView')->name('pending');//pending content page view
@@ -63,6 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/content-hard-delete/{id}', 'ContentController@contenthardDelete')->where(array('id' => '[0-9]+'))->name('content-hard-delete');//content hard delete
     Route::get('/content-export', 'ExcelDownloadController@contentExport')->name('content-export');//excel contents download
     Route::post('/content-import', 'ExcelUploadController@contentImport')->name('content-import');//excel contents added
+
 
     //------------Comments------------
     Route::get('/comments', 'ContentController@commentsView')->name('comments-view');

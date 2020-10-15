@@ -69,5 +69,10 @@ class AdminController extends Controller
         session()->flash('user-delete', 'Successfully Deleted');
         return back();
     }
+    public function adminContact()
+    {
+         $contact=DB::table('contact')->get();
+         return view('admin.contact.messageView',compact('contact'));
+    }
 
 }

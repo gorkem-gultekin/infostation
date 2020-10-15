@@ -98,27 +98,20 @@ class HomeController extends Controller
         $mostRead = $this->mostRead();
         $featuredPosts = $this->featuredPosts();
         $piece = $this->piece();
-        if ($category == 'populer') {
-            $categoryPost = DB::table('category')
-                ->join('contents', 'contents.category', '=', 'category.id')
-                ->where('is_approve', '=', '1')
-                ->orderBy('viewing', 'desc')
-                ->select()->get();
-            return view('category', compact(['categoryPost', 'mostRead', 'featuredPosts', 'piece']));
-        } else {
-            $categoryPost = DB::table('category')
-                ->join('contents', 'contents.category', '=', 'category.id')
-                ->where([['category.check_name', '=', $category], ['contents.is_approve', '=', '1']])
-                ->orderBy('published_at', 'desc')
-                ->select()->get();
-            return view('category', compact(['categoryPost', 'mostRead', 'featuredPosts', 'piece']));
-        }
+        $categoryPost = DB::table('category')
+            ->join('contents', 'contents.category', '=', 'category.id')
+            ->where([['category.check_name', '=', $category], ['contents.is_approve', '=', '1']])
+            ->orderBy('published_at', 'desc')
+            ->select()->get();
+        return view('category', compact(['categoryPost', 'mostRead', 'featuredPosts', 'piece']));
     }
 
     public function populerView()
     {
         $mostRead = $this->mostRead();
-        return view('populer', compact('mostRead'));
+        $featuredPosts = $this->featuredPosts();
+        $piece = $this->piece();
+        return view('populer', compact('mostRead', 'featuredPosts', 'piece'));
     }
 
     public function bulletin(Request $reguest)
