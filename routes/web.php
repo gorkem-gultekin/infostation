@@ -46,6 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/delete/{id}', 'AdminController@delete')->where(array('id' => '[0-9]+'));//id control
     Route::post('/create', 'AdminController@userCreate');
     Route::get('/admin-contact','AdminController@adminContact')->name('admin-contact');
+    Route::get('/bulletin','AdminController@bulletinView')->name('bulletin');
+
 
     //------------Content Controller------------
     Route::get('/pending', 'ContentController@pendingView')->name('pending');//pending content page view
@@ -69,6 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/comments-ok/{id}', 'ContentController@commentsOk')->name('comments-ok');
     Route::get('/comments-del/{id}', 'ContentController@commentsDel')->name('comments-del');
     Route::get('/comments-hard-del/{id}', 'ContentController@commentsHardDel')->name('comments-hard-del');
+    Route::get('/comment/search','ContentController@commentSearch');//comments page contents search
 
 
 

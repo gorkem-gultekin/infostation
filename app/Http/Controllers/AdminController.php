@@ -74,5 +74,10 @@ class AdminController extends Controller
          $contact=DB::table('contact')->get();
          return view('admin.contact.messageView',compact('contact'));
     }
+    public function bulletinView()
+    {
+        $bulletin_members=DB::table('bulletin')->get();
+        return view('admin.contact.bulletin',compact('bulletin_members'));
+    }
 
 }

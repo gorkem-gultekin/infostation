@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +17,6 @@
     <link type="text/css" rel="stylesheet" href="{{asset('home/css/style.css')}}"/>
     <!-- Favicon -->
     <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon"/>
-
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -56,26 +55,29 @@
                         <div class="search-form">
                             <input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">
                             <button class="search-close"><i class="fa fa-times"></i></button>
-                    </div>
+                        </div>
                     </form>
                 </div>
                 <!-- /search & aside toggle -->
             </div>
         </div>
         <!-- /Main Nav -->
-
         <!-- Aside Nav -->
         <div id="nav-aside">
             <!-- nav -->
             <div class="section-row">
                 <ul class="nav-aside-menu">
                     <li><a href="/">Anasayfa</a></li>
-                    <li><a href="#">Popüler</a></li>
+                    <li><a href="/populer">Popüler</a></li>
+                    <a href="/category/donanim">Donanım</a>
+                    <a href="/category/mobil">Mobil</a>
+                    <a href="/category/oyun">Oyun</a>
+                    <a href="/category/yazilim">Yazılım</a>
+
                     <li><a href="/contact">İletişim</a></li>
                 </ul>
             </div>
             <!-- /nav -->
-
             <!-- widget posts -->
             <div class="section-row">
                 <h3>Öne Çıkan Haberler</h3>
@@ -92,7 +94,6 @@
                 @endforeach
             </div>
             <!-- /widget posts -->
-
             <!-- social links -->
             <div class="section-row">
                 <h3>Follow us</h3>
@@ -104,7 +105,6 @@
                 </ul>
             </div>
             <!-- /social links -->
-
             <!-- aside nav close -->
             <button class="nav-aside-close"><i class="fa fa-times"></i></button>
             <!-- /aside nav close -->
@@ -115,7 +115,6 @@
     @yield('category-title')
 </header>
 <!-- /Header -->
-
 <!-- section -->
 <div class="section">
     <!-- container -->
@@ -259,7 +258,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     </div>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-6">
@@ -284,7 +282,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     </div>
                 </div>
             </div>
-
             <div class="col-md-3">
                 <div class="footer-widget">
                     <h3 class="footer-title">Bültenimize Katılın</h3>
@@ -312,18 +309,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     </ul>
                 </div>
             </div>
-
         </div>
         <!-- /row -->
     </div>
     <!-- /container -->
 </footer>
 <!-- /Footer -->
-
 <!-- jQuery Plugins -->
 <script src="{{asset('home/js/jquery.min.js')}}"></script>
 <script src="{{asset('home/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('home/js/main.js')}}"></script>
-
 </body>
 </html>

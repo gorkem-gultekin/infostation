@@ -121,7 +121,6 @@ class HomeController extends Controller
         ]);
         session()->flash('bulletin-success', 'Bültenimize Katıldınız.');
         return back();
-
     }
 
     public function contactView()
@@ -176,6 +175,5 @@ class HomeController extends Controller
             }
         }
         return view('search', compact('mostRead', 'featuredPosts', 'piece'))->withMessage("Aradığınız Bulunamadı");
-
     }
 }

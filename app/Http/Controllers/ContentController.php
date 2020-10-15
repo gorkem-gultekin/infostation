@@ -120,8 +120,8 @@ class ContentController extends Controller
 
     public function commentsView()
     {
-        $contents = DB::table('contents')->get();
-        return view('admin.content.comments.comments-view', compact('contents'));
+        $details = DB::table('contents')->get();
+        return view('admin.content.comments.comments-view', compact('details'));
     }
 
     public function commentsEdit($id)
@@ -171,6 +171,19 @@ class ContentController extends Controller
         session()->flash('comment-del', 'Comment Has Been Hard Deleted.');
         return back();
 
+    }
+    public function commentSearch(Request $request)
+    {
+        $q = $request['search'];
+        if ($q != "") {
+            $contents = Contents::where('title', 'LIKE', '%' . $q . '%')
+                ->orWhere('text', 'LIKE', '%' . $q . '%')
+                ->get();
+            if (count($contents) > 0) {
+                return view('admin.content.comments.comments-view')->withDetails($contents)->withQuery($q);
+            }
+        }
+        return view('admin.content.comments.comments-view')->withMessage("Aradığınız Bulunamadı");
     }
 
 }

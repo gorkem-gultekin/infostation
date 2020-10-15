@@ -13,11 +13,16 @@
     </ul>
 @endsection
 @section('content')
+    @if(isset($details))
     <div class="main-content-inner">
         <div class="card-area">
             <div class="row">
                 <div class="card-body">
-                    <h4 class="header-title">News</h4>
+                    <h4 class="header-title">News<form action="{{url('/comment/search/')}}" method="get">
+                            <p align="right">
+                                <input type="text" name="search" placeholder="Search..." required role="search">
+                            </p>
+                        </form></h4>
                     <div class="single-table">
                         <div class="table-responsive">
                             <table class="table table-striped text-center">
@@ -31,14 +36,16 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($contents as $content)
-                                <tr>
-                                    <td>{{$content->id}}</td>
-                                    <td><img src="{{asset('/uploads/content/').'/'.$content->photo}}" height="100" width="100" alt=""></td>
-                                    <td>{{$content->title}}</td>
-                                    <td></td>
-                                    <td><a href="/comments-edit/{{$content->id}}"><i class="fa fa-edit"></i></a></td>
-                                </tr>
+                                @foreach($details as $content)
+                                    <tr>
+                                        <td>{{$content->id}}</td>
+                                        <td><img src="{{asset('/uploads/content/').'/'.$content->photo}}" height="100"
+                                                 width="100" alt=""></td>
+                                        <td>{{$content->title}}</td>
+                                        <td></td>
+                                        <td><a href="/comments-edit/{{$content->id}}"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
@@ -48,4 +55,13 @@
             </div>
         </div>
     </div>
+    @elseif(isset($message))
+        <div class="col-md-12">
+            <div class="section-row">
+                <a href="#">
+                    <center>{{$message}}</center>
+                </a>
+            </div>
+        </div>
+    @endif
 @endsection

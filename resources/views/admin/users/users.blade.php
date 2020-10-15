@@ -46,9 +46,7 @@
                                     <td>
                                         <ul class="d-flex justify-content-center">
                                             <li class="mr-3"><a href="/update/{{$user->id}}" class="text-secondary"><i class="fa fa-edit"></i></a></li>
-
                                             <li class="mr-3"><a href="/delete/{{$user->id}}" class="text-danger"><i class="ti-trash"></i></a></li>
-
                                         </ul>
                                     </td>
                                 </tr>

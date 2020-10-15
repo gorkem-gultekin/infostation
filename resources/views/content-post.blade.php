@@ -121,8 +121,8 @@
                     <!-- reply -->
                     <div class="section-row">
                         <div class="section-title">
-                            <h2>Leave a reply</h2>
-                            <p>your email address will not be published. required fields are marked *</p>
+                            <h2>Yorum Bırakın</h2>
+                            <p>E-posta adresiniz yayınlanmayacaktır. Zorunlu alanlar işaretlendi *</p>
                         </div>
                         @if (session('comment-success'))
                             <div class="alert alert-success" role="alert">
@@ -137,13 +137,13 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <span>Name *</span>
+                                        <span>İsim *</span>
                                         <input class="input" type="text" name="name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <span>Email *</span>
+                                        <span>E-mail *</span>
                                         <input class="input" type="email" name="email" required>
                                     </div>
                                 </div>
