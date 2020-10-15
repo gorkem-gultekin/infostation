@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
     <!-- Favicon -->
-    <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon" />
+    <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon"/>
     <!-- modernizr css -->
     <script src="{{asset('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
 </head>
@@ -39,40 +39,36 @@
         <div class="sidebar-header">
             <div class="logo">
                 <a href="/admin"><img src="{{asset('assets/images/icon/logo.png')}}" alt="logo"></a>
-{{--                <h1 style="color: white">infoStation</h1>--}}
+                {{--                <h1 style="color: white">infoStation</h1>--}}
             </div>
         </div>
         <div class="main-menu">
             <div class="menu-inner">
                 <nav>
                     <ul class="metismenu" id="menu">
-                        <li class="@yield('home-active')"><a href="{{route('home')}}"><i class="ti-home"></i> <span>home</span></a></li>
+                        <li class="@yield('home-active')"><a href="{{route('home')}}"><i class="ti-home"></i>
+                                <span>home</span></a></li>
 
                         <li class="@yield('content-active')">
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Content</span></a>
+                            <a href="javascript:void(0)" aria-expanded="true"><i
+                                    class="ti-dashboard"></i><span>Content</span></a>
                             <ul class="collapse">
                                 <li class="@yield('new-active')"><a href="{{route('new-content')}}"><i
                                             class="ti-marker-alt"></i><span>New Content</span></a>
                                 </li><!-- active edit-->
-                                <li class="@yield('pending-active')"><a href="{{route('pending')}}"><i class="ti-save"></i><span>Pending Approval</span></a></li>
+                                <li class="@yield('pending-active')"><a href="{{route('pending')}}"><i
+                                            class="ti-save"></i><span>Pending Approval</span></a></li>
                                 <li class="@yield('published-active')"><a href="{{route('published-content')}}"><i
-                                            class="ti-eye"></i><span>Published</span> </a></li>
+                                            class="ti-eye"></i><span>Published Content</span> </a></li>
                                 <li class="@yield('deleted-active')"><a href="{{route('deleted-content')}}"><i
                                             class="ti-trash"></i><span>Deleted Content</span></a></li>
                             </ul>
                         </li>
-                        <li class="@yield('users-active')"><a href="{{route('users')}}"><i class="ti-user"></i> <span>users</span></a></li>
-                        <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i
-                                    class="ti-pie-chart"></i><span>Charts</span></a>
-                            <ul class="collapse">
-                                <li><a href="barchart.html">bar chart</a></li>
-                                <li><a href="linechart.html">line Chart</a></li>
-                                <li><a href="piechart.html">pie chart</a></li>
-                            </ul>
+                        <li class="@yield('comment-active')"><a href="{{route('comments-view')}}"><i
+                                    class="ti-comment"></i> <span>comments</span></a></li>
+                        <li class="@yield('users-active')"><a href="{{route('users')}}"><i class="ti-user"></i> <span>users</span></a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>UI Features</span></a>
                             <ul class="collapse">
                                 <li><a href="accordion.html">Accordion</a></li>
                                 <li><a href="alert.html">Alert</a></li>
@@ -162,10 +158,10 @@
                         <li id="full-view"><i class="ti-fullscreen"></i></li>
                         <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                         <li class="dropdown">
-{{--                            bildirim butonu--}}
-{{--                            <i class="ti-bell dropdown-toggle" data-toggle="dropdown">--}}
-{{--                                <span>2</span>--}}
-{{--                            </i>--}}
+                            {{--                            bildirim butonu--}}
+                            {{--                            <i class="ti-bell dropdown-toggle" data-toggle="dropdown">--}}
+                            {{--                                <span>2</span>--}}
+                            {{--                            </i>--}}
                             <div class="dropdown-menu bell-notify-box notify-box">
                                 <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
                                 <div class="nofity-list">
@@ -282,8 +278,8 @@
                         <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <i
                                 class="fa fa-angle-down"></i></h4>
                         <div class="dropdown-menu">
-{{--                            <a class="dropdown-item" href="#">Message</a>--}}
-                             <a class="dropdown-item" href="update/{{Auth::user()->id}}">Settings</a>
+                            {{--                            <a class="dropdown-item" href="#">Message</a>--}}
+                            <a class="dropdown-item" href="update/{{Auth::user()->id}}">Settings</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

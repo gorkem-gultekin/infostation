@@ -33,10 +33,9 @@
             <div class="container">
                 <!-- logo -->
                 <div class="nav-logo">
-                    <a href="/" class="logo"><img src="{{asset('home/./img/logo.png')}}" alt=""></a>
+                    <a href="/" class="logo"><img src="{{asset('home/img/logo.png')}}" alt=""></a>
                 </div>
                 <!-- /logo -->
-
                 <!-- nav -->
                 <ul class="nav-menu nav navbar-nav">
                     <li><a href="/">Anasayfa</a></li>

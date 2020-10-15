@@ -56,6 +56,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/content-export', 'ExcelDownloadController@contentExport')->name('content-export');//excel contents download
     Route::post('/content-import', 'ExcelUploadController@contentImport')->name('content-import');//excel contents added
 
+   Route::get('/comments','ContentController@commentsView')->name('comments-view');
+   Route::get('/comments-edit/{id}','ContentController@commentsEdit')->name('comments-edit');
+   Route::get('/comments-ok/{id}','ContentController@commentsOk')->name('comments-ok');
+   Route::get('/comments-del/{id}','ContentController@commentsDel')->name('comments-del');
+   Route::get('/comments-hard-del/{id}','ContentController@commentsHardDel')->name('comments-hard-del');
+
 });
 
 

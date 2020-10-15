@@ -118,4 +118,59 @@ class ContentController extends Controller
         return back();
     }
 
+    public function commentsView()
+    {
+        $contents = DB::table('contents')->get();
+        return view('admin.content.comments.comments-view', compact('contents'));
+    }
+
+    public function commentsEdit($id)
+    {
+        $content = DB::table('contents')->where('id', '=', $id)->get();
+        $waiting_comments = DB::table('comments')
+            ->join('contents', 'content_id', '=', 'contents.id')
+            ->where([['comments.is_approve', '=', false], ['comments.deleted_at', '=', null], ['contents.id', '=', $id]])
+            ->select('comments.id', 'comments.name', 'comments.email', 'comments.comment')->get();
+        $published_comments = DB::table('comments')
+            ->join('contents', 'content_id', '=', 'contents.id')
+            ->where([['comments.is_approve', '=', true], ['comments.deleted_at', '=', null], ['contents.id', '=', $id]])
+            ->select('comments.id', 'comments.name', 'comments.email', 'comments.comment')->get();
+        $deleted_comments = DB::table('comments')
+            ->join('contents', 'content_id', '=', 'contents.id')
+            ->where([['comments.is_approve', '=', false], ['contents.id', '=', $id]])
+            ->select('comments.id', 'comments.name', 'comments.email', 'comments.comment')->get();
+        return view('admin.content.comments.comment', compact('waiting_comments', 'published_comments', 'deleted_comments', 'content'));
+    }
+
+    public function commentsOk($id)
+    {
+        DB::table('comments')->where('id', '=', $id)->update([
+            'confirming' => Auth::user()->id,
+            'published_at' => Carbon::now(),
+            'is_approve' => '1',
+            'deleted_at' => null
+        ]);
+        session()->flash('comment-ok', 'Comment Approved.');
+        return back();
+    }
+
+    public function commentsDel($id)
+    {
+        DB::table('comments')->where('id', '=', $id)->update([
+            'confirming' => Auth::user()->id,
+            'deleted_at' => Carbon::now(),
+            'is_approve'=>false
+        ]);
+        session()->flash('comment-del', 'Comment Has Been Deleted.');
+        return back();
+
+    }
+    public function commentsHardDel($id)
+    {
+        DB::table('comments')->delete($id);
+        session()->flash('comment-del', 'Comment Has Been Hard Deleted.');
+        return back();
+
+    }
+
 }
