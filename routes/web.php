@@ -25,6 +25,7 @@ Route::get('/contact', 'HomeController@contactView');
 Route::post('/message', 'HomeController@contactMessage');
 Route::post('/comment-create/{id}', 'HomeController@commentCreate')->where(array('id' => '[0-9]+'))->name('comment-create');//comment save
 Route::get('/populer','HomeController@populerView');
+Route::get('/forum','HomeController@forumView');
 Route::post('/search/', 'HomeController@search')->name('search');
 
 
@@ -47,6 +48,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/create', 'AdminController@userCreate');
     Route::get('/admin-contact','AdminController@adminContact')->name('admin-contact');
     Route::get('/bulletin','AdminController@bulletinView')->name('bulletin');
+    Route::get('/bulletin-members-delete/{id}','AdminController@bulletinMembersDelete')->name('bulletin-members-delete');
+
+    Route::get('/deneme','AdminController@deneme');
 
 
     //------------Content Controller------------

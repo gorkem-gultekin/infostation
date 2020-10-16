@@ -90,6 +90,9 @@ class HomeController extends Controller
         $mostRead = $this->mostRead();
         $featuredPosts = $this->featuredPosts();
         $piece = $this->piece();
+        $viewing = DB::table('contents')->where('search_title', '=', $search_title)->select('viewing')->get();
+        $new_viewing = $viewing[0]->viewing + 1;
+        DB::table('contents')->where('search_title', '=', $search_title)->update(['viewing' => $new_viewing]);
         return view('content-post', compact(['contents', 'mostRead', 'featuredPosts', 'piece', 'user', 'comments', 'count']));
     }
 
@@ -175,5 +178,9 @@ class HomeController extends Controller
             }
         }
         return view('search', compact('mostRead', 'featuredPosts', 'piece'))->withMessage("Aradığınız Bulunamadı");
+    }
+    public function forumView()
+    {
+        return view('soon');
     }
 }

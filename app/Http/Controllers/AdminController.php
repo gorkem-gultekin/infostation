@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -17,7 +18,7 @@ class AdminController extends Controller
             ->join('contents', 'contents.category', '=', 'category.id')
             ->orderBy('created_at', 'desc')
             ->select()->get();
-        return view('home',compact('posts'));
+        return view('home', compact('posts'));
     }
 
     public function indexView()
@@ -37,8 +38,7 @@ class AdminController extends Controller
     {
         $filePhotoUrl = $request->file('photo');
         $password = $request->get('password');
-        if ($filePhotoUrl == null)
-        {
+        if ($filePhotoUrl == null) {
             User::where('id', $id)->update([
                 'name' => $request->get('name'),
                 'username' => $request->get('username'),
@@ -46,9 +46,7 @@ class AdminController extends Controller
                 'password' => Hash::make($password),
                 'updated_at' => Carbon::now()
             ]);
-        }
-        else
-        {
+        } else {
             $profilePhotoName = uniqid('profile_') . '.' . $filePhotoUrl->getClientOriginalExtension();
             $filePhotoUrl->move(UploadPaths::getUploadPath('profile_photos'), $profilePhotoName);
             User::where('id', $id)->update([
@@ -63,21 +61,54 @@ class AdminController extends Controller
         session()->flash('user-update', 'Registration Successfully Updated');
         return back();
     }
+
     public function delete($id)
     {
         DB::table('users')->where('id', '=', $id)->update(['deleted_at' => Carbon::now()]);//id'ye ait kullanıcının deleted_at sütununa silme tarihi ekler ama tabloda durur soft delete
         session()->flash('user-delete', 'Successfully Deleted');
         return back();
     }
+
     public function adminContact()
     {
-         $contact=DB::table('contact')->get();
-         return view('admin.contact.messageView',compact('contact'));
+        $contact = DB::table('contact')->get();
+        return view('admin.contact.messageView', compact('contact'));
     }
+
     public function bulletinView()
     {
-        $bulletin_members=DB::table('bulletin')->get();
-        return view('admin.contact.bulletin',compact('bulletin_members'));
+        $bulletin_members = DB::table('bulletin')->get();
+        return view('admin.contact.bulletin', compact('bulletin_members'));
+    }
+
+    public function bulletinMembersDelete($id)
+    {
+        DB::table('bulletin')->delete($id);//content delete updated delete_at
+        session()->flash('bulletin-members-delete', 'Successfully Member Deleted From Bulletin');
+        return back();
+    }
+
+    public function deneme()
+    {
+        $to_email = DB::table('bulletin')->select('email')->get();
+        $mostRead = DB::table('category')
+            ->join('contents', 'contents.category', '=', 'category.id')
+            ->where('is_approve', '=', '1')
+            ->orderBy('viewing', 'desc')
+            ->select()->get();
+        $array = [
+            'title' => $mostRead[0]->title,
+        ];
+
+
+        Mail::send('email.bulletin-mail', $array, function ($message) use ($mail) {
+            $message->subject('infoStation Haftalık Bülten');
+            $message->to($mail);
+        });
+
+        return back();
+
+
     }
 
 }

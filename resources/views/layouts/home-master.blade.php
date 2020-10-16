@@ -43,7 +43,9 @@
                     <li class="cat-2"><a href="/category/mobil">Mobil</a></li>
                     <li class="cat-3"><a href="/category/oyun">Oyun</a></li>
                     <li class="cat-4"><a href="/category/yazilim">Yazılım</a></li>
+                    <li><a href="/forum">Forum</a></li>
                     <li><a href="/contact">İletişim</a></li>
+
                 </ul>
                 <!-- /nav -->
                 <!-- search & aside toggle -->
@@ -69,10 +71,11 @@
                 <ul class="nav-aside-menu">
                     <li><a href="/">Anasayfa</a></li>
                     <li><a href="/populer">Popüler</a></li>
-                    <a href="/category/donanim">Donanım</a>
+                    <li><a href="/category/donanim">Donanım</a></li>
                     <a href="/category/mobil">Mobil</a>
                     <a href="/category/oyun">Oyun</a>
                     <a href="/category/yazilim">Yazılım</a>
+                    <li><a href="/forum">Forum</a></li>
 
                     <li><a href="/contact">İletişim</a></li>
                 </ul>

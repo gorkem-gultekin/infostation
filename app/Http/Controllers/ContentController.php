@@ -137,7 +137,7 @@ class ContentController extends Controller
             ->select('comments.id', 'comments.name', 'comments.email', 'comments.comment')->get();
         $deleted_comments = DB::table('comments')
             ->join('contents', 'content_id', '=', 'contents.id')
-            ->where([['comments.is_approve', '=', false], ['contents.id', '=', $id]])
+            ->where([['comments.is_approve', '=', false],['comments.deleted_at','!=',null],['contents.id', '=', $id]])
             ->select('comments.id', 'comments.name', 'comments.email', 'comments.comment')->get();
         return view('admin.content.comments.comment', compact('waiting_comments', 'published_comments', 'deleted_comments', 'content'));
     }
@@ -163,14 +163,12 @@ class ContentController extends Controller
         ]);
         session()->flash('comment-del', 'Comment Has Been Deleted.');
         return back();
-
     }
     public function commentsHardDel($id)
     {
         DB::table('comments')->delete($id);
         session()->flash('comment-del', 'Comment Has Been Hard Deleted.');
         return back();
-
     }
     public function commentSearch(Request $request)
     {
