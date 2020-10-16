@@ -43,7 +43,8 @@
                                 <img class="img-fluid mr-4" src="{{asset('/uploads/content/').'/'.$content->photo}}"
                                      alt="image" width="100" height="150">
                                 <div class="media-body">
-                                    <h4 class="mb-3">{{$content->title}}</h4><div class="text-abbreviation-admin"> {{$content->text}}</div>
+
+                                    <h4 class="mb-3">{{$content->title}}</h4><b>Published Date:</b> {{$content->created_at}}<br><div class="text-abbreviation-admin"> {{$content->text}}</div>
                                 </div>
                             </div>
                             <p align="right">

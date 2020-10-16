@@ -6,6 +6,7 @@ use App\Contents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -119,9 +120,17 @@ class HomeController extends Controller
 
     public function bulletin(Request $reguest)
     {
+        $to_email = $reguest['email'];
         DB::table('bulletin')->insert([
-            'email' => $reguest->get('email')
+            'email' => $to_email
         ]);
+        $to_name = 'infoStation';
+        $body = ['email'=>$to_email];// mail content
+        Mail::send('email.register-mail', $body, function ($message)
+        use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)->subject('Welcome Aboard!');
+            $message->from(env('MAIL_USERNAME'), 'infoStation');
+        });
         session()->flash('bulletin-success', 'Bültenimize Katıldınız.');
         return back();
     }

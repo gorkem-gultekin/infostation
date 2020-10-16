@@ -25,9 +25,7 @@
         <div class="card-area">
             <div class="row">
                 <div class="card-body">
-
-                    <h4 class="header-title">Bulletin Members</h4> <p align="right"><button type="button" class="btn btn-rounded btn-success mb-3" onclick="location.href='/deneme'">Mail Send</button></p>
-
+{{--                    <h4 class="header-title">Bulletin Members</h4> <p align="right"><button type="button" class="btn btn-rounded btn-success mb-3" onclick="location.href='/deneme'">Mail Send</button></p>--}}
                     <div class="single-table">
                         <div class="table-responsive">
 

@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="form-group">
                                     <p align="left"><label for="exampleFormControlTextarea1">Text</label></p>
-                                    <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="10"
+                                    <textarea class="form-control" id="editor" name="text" id="exampleFormControlTextarea1" rows="10"
                                               required>{{$content->text}}</textarea>
                                     <div class="invalid-feedback">Please enter content.</div>
                                 </div>
@@ -73,9 +73,7 @@
                                     <p align="center">
                                         <br>
                                         <button type="submit" class="btn btn-rounded btn-success mb-3">Save</button>
-                                        <a href="{{route('home')}}">
-                                            <button type="button" class="btn btn-rounded btn-danger mb-3">Cancel
-                                            </button>
+                                        <a href="{{route('home')}}"><button type="button" class="btn btn-rounded btn-danger mb-3">Cancel</button>
                                         </a>
                                     </p>
                                 </div>
@@ -96,3 +94,4 @@
     </div>
     </center>
 @endsection
+

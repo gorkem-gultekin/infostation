@@ -40,7 +40,7 @@
         </div>
     </div>
     <!-- ad -->
-    @foreach($mostRead->slice(2) as $post)
+    @foreach($mostRead->slice(2-10) as $post)
         <div class="col-md-12">
             <div class="post post-row">
 

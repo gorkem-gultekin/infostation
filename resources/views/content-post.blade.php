@@ -7,11 +7,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10">
-                        <ul class="page-header-breadcrumb">
-                            <li><a href="/">Anasayfa</a></li>
-                            <li>{{$contents[0]->name}}</li>
-                        </ul>
-                        <h1>{{$contents[0]->name}}</h1>
+                    <ul class="page-header-breadcrumb">
+                        <li><a href="/">Anasayfa</a></li>
+                        <li>{{$contents[0]->name}}</li>
+                    </ul>
+                    <h1>{{$contents[0]->name}}</h1>
                 </div>
             </div>
         </div>
@@ -45,13 +45,12 @@
                                 <a href="https://twitter.com/share" target="_blank"
                                    data-url="content-post/{{$content->search_title}}" data-lang="tr"
                                    class="share-twitter"><i class="fa fa-twitter"></i></a>
-                                {{--                            <a href="#" class="share-google-plus"><i class="fa fa-google-plus"></i></a>--}}
-                                {{--                            <a href="#" class="share-pinterest"><i class="fa fa-pinterest"></i></a>--}}
-                                {{--                            <a href="#" class="share-linkedin"><i class="fa fa-linkedin"></i></a>--}}
-                                {{--                            <a href="#"><i class="fa fa-envelope"></i></a>--}}
+                                <a href="#" class="share-google-plus"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" class="share-pinterest"><i class="fa fa-pinterest"></i></a>
+                                <a href="#" class="share-linkedin"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-envelope"></i></a>
                             </div>
                         @endforeach
-
                     </div>
 
                     <!-- ad -->
@@ -97,23 +96,23 @@
                         <div class="post-comments">
                             <!-- comment -->
                             @foreach($comments as $com)
-                            <div class="media">
+                                <div class="media">
 
-                                <div class="media-left">
-                                    <img class="media-object" src="{{asset('home/./img/avatar.png')}}" alt="avatar">
-                                </div>
-                                <div class="media-body">
-                                    <div class="media-heading">
-                                        <h4>{{$com->name}}</h4>
-                                        <span class="time">{{$com->published_at}}</span>
+                                    <div class="media-left">
+                                        <img class="media-object" src="{{asset('home/./img/avatar.png')}}" alt="avatar">
                                     </div>
-                                    <p>{{$com->comment}}</p>
-                                    <!-- /comment -->
-                                </div>
+                                    <div class="media-body">
+                                        <div class="media-heading">
+                                            <h4>{{$com->name}}</h4>
+                                            <span class="time">{{$com->published_at}}</span>
+                                        </div>
+                                        <p>{{$com->comment}}</p>
+                                        <!-- /comment -->
+                                    </div>
 
-                            </div>
+                                </div>
                         @endforeach
-                            <!-- /comment -->
+                        <!-- /comment -->
 
                         </div>
                     </div>

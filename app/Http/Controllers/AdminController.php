@@ -88,27 +88,4 @@ class AdminController extends Controller
         return back();
     }
 
-    public function deneme()
-    {
-        $to_email = DB::table('bulletin')->select('email')->get();
-        $mostRead = DB::table('category')
-            ->join('contents', 'contents.category', '=', 'category.id')
-            ->where('is_approve', '=', '1')
-            ->orderBy('viewing', 'desc')
-            ->select()->get();
-        $array = [
-            'title' => $mostRead[0]->title,
-        ];
-
-
-        Mail::send('email.bulletin-mail', $array, function ($message) use ($mail) {
-            $message->subject('infoStation Haftalık Bülten');
-            $message->to($mail);
-        });
-
-        return back();
-
-
-    }
-
 }

@@ -72,9 +72,9 @@
                     <li><a href="/">Anasayfa</a></li>
                     <li><a href="/populer">Popüler</a></li>
                     <li><a href="/category/donanim">Donanım</a></li>
-                    <a href="/category/mobil">Mobil</a>
-                    <a href="/category/oyun">Oyun</a>
-                    <a href="/category/yazilim">Yazılım</a>
+                    <li><a href="/category/mobil">Mobil</a></li>
+                    <li><a href="/category/oyun">Oyun</a></li>
+                    <li><a href="/category/yazilim">Yazılım</a></li>
                     <li><a href="/forum">Forum</a></li>
 
                     <li><a href="/contact">İletişim</a></li>
@@ -223,12 +223,12 @@
                     <div class="tags-widget">
                         <ul>
                             <li><a href="#">Teknoloji</a></li>
-                            <li><a href="#">Donanım</a></li>
-                            <li><a href="#">Mobil</a></li>
-                            <li><a href="#">Oyun</a></li>
-                            <li><a href="#">Yazılım</a></li>
+                            <li><a href="/category/donanim">Donanım</a></li>
+                            <li><a href="/category/mobil">Mobil</a></li>
+                            <li><a href="/category/oyun">Oyun</a></li>
+                            <li><a href="/category/yazilim">Yazılım</a></li>
                             <li><a href="#">Bilgi</a></li>
-                            <li><a href="#">infoStation</a></li>
+                            <li><a href="/">infoStation</a></li>
                         </ul>
                     </div>
                 </div>

@@ -31,7 +31,7 @@
                                     <th scope="col">Id</th>
                                     <th scope="col">Photo</th>
                                     <th scope="col">Title</th>
-                                    <th scope="col">Comment Count</th>
+                                    <th scope="col">Published Date</th>
                                     <th scope="col">action</th>
                                 </tr>
                                 </thead>
@@ -42,7 +42,7 @@
                                         <td><img src="{{asset('/uploads/content/').'/'.$content->photo}}" height="100"
                                                  width="100" alt=""></td>
                                         <td>{{$content->title}}</td>
-                                        <td></td>
+                                        <td>{{$content->published_at}}</td>
                                         <td><a href="/comments-edit/{{$content->id}}"><i class="fa fa-edit"></i></a>
                                         </td>
                                     </tr>

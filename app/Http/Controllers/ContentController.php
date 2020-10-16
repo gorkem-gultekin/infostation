@@ -13,7 +13,7 @@ class ContentController extends Controller
 {
     public function pendingView()
     {
-        $contents = DB::table('contents')->where('is_approve', '=', '0')->where('deleted_at', '=', null)->get();
+        $contents = DB::table('contents')->where('is_approve', '=', '0')->where('deleted_at', '=', null)->orderBy('created_at', 'desc')->get();
         return view('admin.content.pending', compact('contents'));
     }
 
@@ -120,7 +120,7 @@ class ContentController extends Controller
 
     public function commentsView()
     {
-        $details = DB::table('contents')->get();
+        $details = DB::table('contents')->orderBy('published_at', 'desc')->get();
         return view('admin.content.comments.comments-view', compact('details'));
     }
 
@@ -137,7 +137,7 @@ class ContentController extends Controller
             ->select('comments.id', 'comments.name', 'comments.email', 'comments.comment')->get();
         $deleted_comments = DB::table('comments')
             ->join('contents', 'content_id', '=', 'contents.id')
-            ->where([['comments.is_approve', '=', false],['comments.deleted_at','!=',null],['contents.id', '=', $id]])
+            ->where([['comments.is_approve', '=', false], ['comments.deleted_at', '!=', null], ['contents.id', '=', $id]])
             ->select('comments.id', 'comments.name', 'comments.email', 'comments.comment')->get();
         return view('admin.content.comments.comment', compact('waiting_comments', 'published_comments', 'deleted_comments', 'content'));
     }
@@ -159,17 +159,19 @@ class ContentController extends Controller
         DB::table('comments')->where('id', '=', $id)->update([
             'confirming' => Auth::user()->id,
             'deleted_at' => Carbon::now(),
-            'is_approve'=>false
+            'is_approve' => false
         ]);
         session()->flash('comment-del', 'Comment Has Been Deleted.');
         return back();
     }
+
     public function commentsHardDel($id)
     {
         DB::table('comments')->delete($id);
         session()->flash('comment-del', 'Comment Has Been Hard Deleted.');
         return back();
     }
+
     public function commentSearch(Request $request)
     {
         $q = $request['search'];

@@ -19,29 +19,24 @@
             text-decoration: none;
             -ms-interpolation-mode: bicubic;
         }
-
         a {
             text-decoration: none;
             border: 0;
             outline: none;
             color: #bbbbbb;
         }
-
         a img {
             border: none;
         }
-
         /* General styling */
 
         td, h1, h2, h3 {
             font-family: Helvetica, Arial, sans-serif;
             font-weight: 400;
         }
-
         td {
             text-align: center;
         }
-
         body {
             -webkit-font-smoothing: antialiased;
             -webkit-text-size-adjust: none;
@@ -51,23 +46,17 @@
             background: #ffffff;
             font-size: 16px;
         }
-
         table {
             border-collapse: collapse !important;
         }
-
         .headline {
             color: #ffffff;
             font-size: 36px;
         }
-
         .force-full-width {
             width: 100% !important;
         }
-
-
     </style>
-
     <style type="text/css" media="screen">
         @media screen {
             /*Thanks Outlook 2013! http://goo.gl/XLxpyl*/
@@ -76,16 +65,12 @@
             }
         }
     </style>
-
     <style type="text/css" media="only screen and (max-width: 480px)">
         /* Mobile styles */
         @media only screen and (max-width: 480px) {
-
             table[class="w320"] {
                 width: 320px !important;
             }
-
-
         }
     </style>
 </head>
@@ -110,7 +95,6 @@
                                     </td>
                                 </tr>
                             </table>
-
                             <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="100%"
                                    bgcolor="#4dbfbf">
                                 <tr>
@@ -127,7 +111,6 @@
                                 </tr>
                                 <tr>
                                     <td>
-
                                         <center>
                                             <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="60%">
                                                 <tr>
@@ -144,8 +127,8 @@
                                                         <table cellspacing="0" cellpadding="0" class="force-full-width">
                                                             <tr>
                                                                 <td style="color: white">
-                                                                    <span>Your account information:</span><br>
-                                                                    Username: {{$username}} <br>
+{{--                                                                    <span>Your account information:</span><br>--}}
+{{--                                                                    Username: {{$username}} <br>--}}
                                                                     Email:{{$email}}<br><br>
                                                                 </td>
                                                             </tr>
@@ -153,9 +136,7 @@
                                                     </td>
                                                 </tr>
                                             </table>
-
                                         </center>
-
                                     </td>
                                 </tr>
                                 <tr>
@@ -179,7 +160,6 @@
                                     </td>
                                 </tr>
                             </table>
-
                             <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="100%"
                                    bgcolor="#f5774e">
                                 <tr>
@@ -196,7 +176,6 @@
                                 </tr>
                                 <tr>
                                     <td>
-
                                         <center>
                                             <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="60%">
                                                 <tr>
@@ -226,7 +205,6 @@
                                     </td>
                                 </tr>
                             </table>
-
                             <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" class="force-full-width"
                                    bgcolor="#414141" style="margin: 0 auto">
                                 <tr>
@@ -251,8 +229,6 @@
                                     </td>
                                 </tr>
                             </table>
-
-
                         </td>
                     </tr>
                 </table>

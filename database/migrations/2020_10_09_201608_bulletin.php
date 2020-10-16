@@ -15,7 +15,7 @@ class Bulletin extends Migration
     {
         Schema::create('bulletin', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email')->unique();
+            $table->string('email');
         });
     }
     /**
