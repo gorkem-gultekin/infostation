@@ -80,6 +80,7 @@ class HomeController extends Controller
             ->where('contents.search_title', '=', $search_title)
             ->orderBy('viewing', 'desc')
             ->select()->get();
+        $text=explode("/p",$contents[0]->text);
         $comments = DB::table('contents')
             ->join('comments', 'content_id', '=', 'contents.id')
             ->where([['comments.content_id', '=', $contents[0]->id], ['comments.is_approve', '=', true]])
@@ -94,7 +95,7 @@ class HomeController extends Controller
         $viewing = DB::table('contents')->where('search_title', '=', $search_title)->select('viewing')->get();
         $new_viewing = $viewing[0]->viewing + 1;
         DB::table('contents')->where('search_title', '=', $search_title)->update(['viewing' => $new_viewing]);
-        return view('content-post', compact(['contents', 'mostRead', 'featuredPosts', 'piece', 'user', 'comments', 'count']));
+        return view('content-post', compact(['contents', 'mostRead', 'featuredPosts', 'piece', 'user', 'comments', 'count','text']));
     }
 
     public function categoryView($category)

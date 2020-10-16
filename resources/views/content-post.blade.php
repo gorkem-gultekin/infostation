@@ -36,7 +36,10 @@
                                          src="{{(asset('/uploads/content/').'/'.$content->photo)}}"
                                          alt="">
                                 </figure>
-                                <p>{{$content->text}}</p>
+                                @foreach($text as $te)
+                                <p>{{$te}}</p>
+                                @endforeach
+
                             </div>
                             {{--                        sosyal medyada paylaşma--}}
                             <div class="post-shares sticky-shares">
