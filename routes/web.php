@@ -28,7 +28,6 @@ Route::get('/populer','HomeController@populerView');
 Route::get('/forum','HomeController@forumView');
 Route::post('/search/', 'HomeController@search')->name('search');
 
-
 //Auth::routes(['verify' => true]); //for verify email
 Route::get('/mail', function () {
     return view('email.register-mail');
